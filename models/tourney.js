@@ -7,7 +7,12 @@ const mongoose = require("mongoose");
 
 // Required schema for tournaments
 const tourneySchema = mongoose.Schema({
-	finalBracket: [];
+	capacity: Number,
+	fighters: [],
 });
+
+tourneySchema.methods.runTourney = function() {
+	console.log("ROUND START");
+};
 
 module.exports = mongoose.model("Tourney", tourneySchema);
