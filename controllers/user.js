@@ -11,9 +11,9 @@ const Slave = require("../models/slave");
 // User Page Route
 router.get("/", async (req, res) => {
 	try {
-		const allUsers = await User.find({});
+		const currentUser = await User.find({});
 		res.render("user/index.ejs", {
-			"users": allUsers
+			"user": currentUser
 		})
 	} catch (err) {
 		res.send(err)

@@ -13,4 +13,3 @@ const slaveSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model("Slave", slaveSchema);
-
