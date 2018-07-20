@@ -1,6 +1,7 @@
 console.log("models/slave.js is running...");
 
 
+
 // Required npm modules
 const mongoose = require("mongoose");
 
@@ -12,3 +13,4 @@ const slaveSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model("Slave", slaveSchema);
+
