@@ -25,16 +25,25 @@ app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
 // Required controllers for router
+// Auth controller
+const authController = require("./controllers/auth.js");
+app.use("/auth", authController);
+// app.use((req, res, next) => {
+// 	if (!req.session.loggedIn) {
+// 		res.redirect("/");
+// 	} else {
+// 		return next();
+// 	}
+// });
+
 // Users controller
-const usersController = require("./controllers/users.js");
-app.use("/users", usersController);
-app.use((req, res, next) => {
-	if (!req.session.loggedIn) {
-		res.redirect("/auth");
-	} else {
-		return next();
-	}
-});
+const usersController = require("./controllers/user.js");
+app.use("/user", usersController);
+
+
+// Slaves controller
+const slavesController = require("./controllers/user.js");
+app.use("/slaves", slavesController);
 
 
 // Home Route

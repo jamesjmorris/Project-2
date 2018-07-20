@@ -4,19 +4,7 @@ console.log("controllers/auth.js is running...");
 // Required npm modules
 const express = require("express");
 const router = express.Router();
-const Account = require("../models/account");
-
-
-// Login Route
-router.get("/", async (req, res) => {
-	try {
-		res.render("auth/login.ejs", {
-		"message": req.session.message
-		})
-	} catch (err) {
-		res.send(err);
-	}
-});
+const User = require("../models/user");
 
 
 router.post("/login", async (req, res) => {
