@@ -7,30 +7,30 @@ const router = express.Router();
 const User = require("../models/user");
 
 
-router.post("/login", async (req, res) => {
-	try {
-		req.session.loggedIn = true;
-		req.session.username = req.body.username;
-		res.redirect("/");
-	} catch (err) {
-		res.send(err)
-	}
+router.get("/", (req, res) => {
+	res.render("auth/login.ejs", {
+		"message": req.session.message
+	})
 });
 
 
-router.get("/logout", async (req, res) => {
-	try {
-		req.sessions.destroy((err) => {
-			if (err) {
-				res.send("Error destroying sesion")
-			} else {
-				res.redirect("/")
-			}
-		})
-	} catch (err) {
-		res.send(err)
-	}
+router.post("/login", (req, res) => {
+		req.session.loggedIn = true;
+		req.session.displayName = req.body.displayName;
+		req.session.username = req.body.username;
+		console.log(req.session);
+		res.redirect("/");
+});
 
+
+router.get("/logout", (req, res) => {
+	req.sessions.destroy((err) => {
+		if (err) {
+			res.send("Error destroying sesion")
+		} else {
+			res.redirect("/")
+		}
+	})
 });
 
 module.exports = router;
