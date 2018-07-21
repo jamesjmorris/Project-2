@@ -11,10 +11,7 @@ const User = require("../models/user");
 // Create Route
 router.get("/new", async (req, res) => {
 	try {
-		const currentUser = await User.find({});
-		res.render("slave/new.ejs", {
-			"slaves": allSlaves
-		})
+		res.render("slave/new.ejs")
 	} catch (err) {
 		res.send(err);
 	}
@@ -22,8 +19,8 @@ router.get("/new", async (req, res) => {
 
 router.post("/", async (req, res) => {
 	try {
-		const foundUser = await User.findBYId(req.body.userId);
 		const newSlave = await Slave.create(req.body);
+		console.log(newSlave);
 		foundUser.slaves.push(newSlave);
 		const data = await foundUser.save();
 		res.redirect("/user");

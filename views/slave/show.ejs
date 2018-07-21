@@ -3,11 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 </head>
 <body>
-
+	<header>
+		<nav>
+				<li><a href="/">Home</a></li>
+				<li><a href=""></a></li>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<h2><a href="/users/<%=user.id%>"><%=user.displayName%>'s</a> slaves</h2>
+			<img src="<%=slave.url%>"/><br/>
+			<h1><%=slave.uploadDate%></h1>
+			<a href="/slave/<%=slave.id%>/edit">Edit Details</a>
+			<form method="POST" action="/slave/<%=slave.id%>?_method=DELETE">
+				<button>Delete</button>
+			</form>
+	</main>
 </body>
 </html>
-
-

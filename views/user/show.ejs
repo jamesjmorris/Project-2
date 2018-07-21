@@ -3,10 +3,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 </head>
 <body>
-
+	<header>
+		<h1><%=user.displayName%></h1>
+		<a href="/users/<%=user.id%>/edit">Edit Profile</a>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/slave/new">Slave Market</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>Owned Slaves</section>
+		<ul>
+			<% for (let i = 0; i < user.slaves.length; i++) { %>
+				<li><%=user.slaves[i].name%></li>
+			<% } %>
+		</ul>
+	</main>
 </body>
 </html>
-

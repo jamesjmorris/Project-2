@@ -48,7 +48,8 @@ app.use((req, res, next) => {
 // Home Route
 app.get("/", (req, res) => {
 	res.render("index.ejs", {
-		"displayName": req.session.displayName
+		"displayName": req.session.displayName,
+		"userId": req.session.id
 	})
 });
 
