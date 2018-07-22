@@ -9,7 +9,7 @@ const session = require("express-session");
 const bcrypt = require("bcrypt");
 
 
-// Session requirements
+// Register new user
 router.get("/", (req, res) => {
 	let message = "";
 	if (req.session.message) {
@@ -22,8 +22,7 @@ router.get("/", (req, res) => {
 
 router.post("/register", async (req, res) => {
 	try {
-		await User.create(req.body)
-		console.log(req.body);
+		const newUser = await User.create(req.body)
 		res.redirect("/")
 	} catch (err) {
 		console.log(err)
@@ -37,22 +36,26 @@ router.post("/login", async (req, res) => {
 	try {
 		const loginAttempt = await User.findOne({username: req.body.username})
 		if (!loginAttempt) {
-			await bcrypt.compare("failstate", "winstate");
+			console.log("invalid username");
 			req.session.message = "Invalid Credentials"
 			res.redirect("/")
 		} else {
 			const validLogin = await bcrypt.compare(req.body.password, loginAttempt.password)
 			if (!validLogin) {
+				console.log("invalid password")
 				req.session.message = "Invalid Credentials"
 				res.redirect("/")
 			} else {
-				res.render("index.ejs")
+				console.log("logging in")
+				console.log(req.body.id);
+				req.session.loggedIn = true;
+				req.session.displayName = req.body.displayName;
+				res.redirect("/");
 			}
 		}
 	} catch (err) {
 		res.send(err)
 	}
-
 });
 
 
