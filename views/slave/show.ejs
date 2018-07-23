@@ -5,24 +5,32 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>Gladiator Details</title>
 </head>
 <body>
+
 	<header>
 		<nav>
+			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href=""></a></li>
+				<li><a href="/users">Active Users</a></li>
+				<li><a href="/slaves">Active Gladiators</a></li>
+			</ul>
 		</nav>
 	</header>
+
 	<main>
 		<section>
-			<h2><a href="/users/<%=user.id%>"><%=user.displayName%>'s</a> slaves</h2>
-			<img src="<%=slave.url%>"/><br/>
-			<h1><%=slave.uploadDate%></h1>
-			<a href="/slave/<%=slave.id%>/edit">Edit Details</a>
-			<form method="POST" action="/slave/<%=slave.id%>?_method=DELETE">
-				<button>Delete</button>
-			</form>
+			<h2><a href="/users/<%=user%>"><%=displayName%>'s</a> Gladiators</h2>
+			<ul>
+				<li><%=slave.name%></li>
+				<a href="/slaves/<%=slave.id%>/edit">Change Name</a>
+				<form action="/slaves/<%=slave.id%>?_method="DELETE">
+					<button>Retire Gladiator</button>
+				</form>
+			</ul>
+		</section>
 	</main>
+
 </body>
 </html>

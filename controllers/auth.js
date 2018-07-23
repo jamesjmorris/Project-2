@@ -49,7 +49,8 @@ router.post("/login", async (req, res) => {
 				console.log("logging in")
 				console.log(req.body.id);
 				req.session.loggedIn = true;
-				req.session.displayName = req.body.displayName;
+				req.session.displayName = loginAttempt.displayName;
+				req.session.userId = loginAttempt.id;
 				res.redirect("/");
 			}
 		}
@@ -69,4 +70,4 @@ router.get("/logout", async (req, res) => {
 	})
 });
 
-// module.exports = router;
+module.exports = router;

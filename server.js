@@ -34,15 +34,15 @@ const slaveController = require("./controllers/slave.js");
 app.use("/slaves", slaveController);
 
 // Auth controller
-// const authController = require("./controllers/auth.js");
-// app.use("/auth", authController);
-// app.use((req, res, next) => {
-// 	if (req.session.loggedIn === true) {
-// 		return next();
-// 	} else {
-// 		res.redirect("/auth");		
-// 	}
-// });
+const authController = require("./controllers/auth.js");
+app.use("/auth", authController);
+app.use((req, res, next) => {
+	if (req.session.loggedIn === true) {
+		return next();
+	} else {
+		res.redirect("/auth");		
+	}
+});
 
 
 // Home Route
