@@ -5,16 +5,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>User Detials</title>
 </head>
 <body>
 	<header>
 		<h1><%=user.displayName%></h1>
-		<a href="/users/<%=%>/edit">Edit Profile</a>
+		<a href="/users/<%=user.id%>/edit">Edit Profile</a>
 		<nav>
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="/slave/new">Slave Market</a></li>
+				<li><a href="/users">Active Users</a></li>
+				<li><a href="/slaves/new">Slave Market</a></li>
 			</ul>
 		</nav>
 	</header>

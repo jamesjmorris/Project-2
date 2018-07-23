@@ -3,9 +3,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Users Index</title>
 </head>
 <body>
+
+	<header>
+		<h1>Users List</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/users/new">Create and Account</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<% for (let i = 0; i < users.length; i++) { %>
+			<h2><li><a href="/users/<%-users[i].id%>"><%=users[i].displayName%></a></li></h2>
+			<a href="/users/<%=users[i].id%>/edit">Edit Details</a>
+			<form action="/users/<%=users[i].id%>?_method=DELETE" method="POST">
+				<button>Delete</button>
+			</form>
+		<% } %>
+	</main>
 
 </body>
 </html>
