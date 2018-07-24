@@ -7,8 +7,9 @@ const mongoose = require("mongoose");
 
 // Required schema for tournaments
 const tourneySchema = mongoose.Schema({
+	name: String,
 	capacity: Number,
-	fighters: [],
+	fighters: []
 });
 
 tourneySchema.methods.runTourney = function() {

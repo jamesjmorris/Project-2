@@ -1,4 +1,4 @@
-console.log("server.js is running...");
+console.log("server is running...");
 
 
 // Required npm modules
@@ -25,16 +25,20 @@ app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
 // Required controllers for router
+// Tournaments controller
+const tournamentController = require("./controllers/tourney");
+app.use("/tourneys", tournamentController);
+
 // User controller
-const userController = require("./controllers/user.js");
+const userController = require("./controllers/user");
 app.use("/users", userController);
 
 // Slaves controller
-const slaveController = require("./controllers/slave.js");
+const slaveController = require("./controllers/slave");
 app.use("/slaves", slaveController);
 
 // Auth controller
-const authController = require("./controllers/auth.js");
+const authController = require("./controllers/auth");
 app.use("/auth", authController);
 app.use((req, res, next) => {
 	if (req.session.loggedIn === true) {

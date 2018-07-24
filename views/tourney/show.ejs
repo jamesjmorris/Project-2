@@ -10,5 +10,32 @@
 </head>
 <body>
 
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/tourneys">Active Tournaments</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section>
+			<h2><%=tourney.name%></h2>
+			<ul>
+				<li>Capacity: <%=tourney.capacity%></li>
+				<h3>Current Roster:</h3>
+				<% for (let i = 0; i < tourney.fighters.length; i++) { %>
+					<li><a href="/slaves/<%=tourney.fighters[i].id%>"><%=tourney.fighters[i].name%></a></li>
+				<% } %>
+			</ul>
+		</section>
+		<form action="/tourneys/<%=tourney.id%>?_method=DELETE" method="POST">
+			<button type="submit">End Tournament</button>
+		</form>
+	</main>
+
+
+
 </body>
 </html>

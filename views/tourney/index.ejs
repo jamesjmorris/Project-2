@@ -10,5 +10,23 @@
 </head>
 <body>
 
+	<header>
+		<h1>Active Tournaments</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/tourneys/new">Sponsor a Tournament</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<ul>
+			<% for (let i = 0; i < tourneys.length; i++) { %>
+				<li><a href="/tourneys/<%=tourneys[i].id%>"><%=tourneys[i].name%></a></li>
+			<% } %>
+		</ul>
+	</main>
+
 </body>
 </html>

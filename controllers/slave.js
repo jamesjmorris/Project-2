@@ -51,7 +51,6 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
 	try {
 		const shownSlave = await Slave.findById(req.params.id);
-		console.log("Slave Found")
 		const foundUser = await User.findOne({"slaves._id":req.params.id});
 		res.render("slave/show.ejs", {
 			"slave": shownSlave,
@@ -68,9 +67,7 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
 	try {
 		const deletedSlave = await Slave.findByIdAndRemove(req.params.id);
-		console.log(`deletedSlave: ${deletedSlave}`);
 		const currentUser = await User.findOne({"slaves._id":req.params.id});
-		console.log(`currentUser: ${currentUser}`);
 		currentUser.slaves.id(req.params.id).remove();
 		const savedCurrentUser = await currentUser.save();
 		res.redirect("/slaves");
@@ -84,7 +81,7 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id/edit", async (req, res) => {
 	const foundSlave = await Slave.findById(req.params.id);
 	res.render("slave/edit.ejs", {
-		"slave": foundSlave,
+		"slave": foundSlave
 	})
 });
 
