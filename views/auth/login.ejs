@@ -6,6 +6,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script type="text/javascript">
+		// This is a function that will randomize the name of each slave as it's created.
+		const namesList = ["Julianus Dama", "Vel Angelus", "Tertius Valens", "Lucius Ecdicius", "Caelus Constans", "Marcellus Balbus", "Opiter Postumus"];
+		const namesGenerated = [];
+		const gladiatorName = namesList[Math.floor(Math.random()*namesList.length)];
+			const generateName = () => {
+				console.log(gladiatorName);
+				return
+			};
+	</script>
 	<title>User Login</title>
 </head>
 <div>
@@ -26,5 +36,10 @@
   </form>
 </div><br/>
 <%=message%>
+<section>
+	<ul>
+		
+	</ul>
+</section>
 </body>
 </html> 

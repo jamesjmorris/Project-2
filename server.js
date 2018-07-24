@@ -7,6 +7,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 
 // Required database
@@ -47,6 +48,36 @@ app.use((req, res, next) => {
 		res.redirect("/auth");		
 	}
 });
+
+
+// This allows the user to remain logged in after restarting the server.
+const store = new MongoDBStore({
+  uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+  collection: 'mySessions'
+});
+ 
+store.on('connected', function() {
+  store.client; // The underlying MongoClient object from the MongoDB driver
+});
+ 
+// Catch errors
+store.on('error', function(error) {
+  assert.ifError(error);
+  assert.ok(false);
+});
+ 
+app.use(require('express-session')({
+  secret: 'This is a secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 // 1 week
+  },
+  store: store,
+  // Boilerplate options, see:
+  // * https://www.npmjs.com/package/express-session#resave
+  // * https://www.npmjs.com/package/express-session#saveuninitialized
+  resave: true,
+  saveUninitialized: true
+}));
 
 
 // Home Route
