@@ -27,11 +27,11 @@ app.use(express.static(__dirname + "/public"));
 // Required controllers for router
 // User controller
 const userController = require("./controllers/user.js");
-app.use("/user", userController);
+app.use("/users", userController);
 
 // Slaves controller
 const slaveController = require("./controllers/slave.js");
-app.use("/slave", slaveController);
+app.use("/slaves", slaveController);
 
 // Tourney controller
 const tourneyController = require("./controllers/tourney.js");
@@ -51,8 +51,10 @@ app.use((req, res, next) => {
 
 // Home Route
 app.get("/", (req, res) => {
+	console.log("Home Route");
 	res.render("index.ejs", {
-		"displayName": req.session.displayName
+		"displayName": req.session.displayName,
+		"userId": req.session._id
 	})
 });
 

@@ -30,3 +30,32 @@
 </div>
 	
 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Gladiator Index</title>
+</head>
+<body>
+
+	<header>
+		<h1>Active Gladiators</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/slaves/new">Slave Market</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<ul>
+		<% for (let i = 0; i < slaves.length; i++) { %>
+			<li><a href="/slaves/<%=slaves[i].id%>"><%=slaves[i].name%></a></li>
+		<% } %>
+		</ul>
+	</main>
+
+</body>
+</html>

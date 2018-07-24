@@ -1,4 +1,32 @@
 <%console.log("views/slave/edit.ejs is running...");%>
 
 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Change Gladiator Name</title>
+</head>
+<body>
 
+	<header>
+		<h1>Change Gladiator Name</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/slaves">Active Gladiators</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<h2>Slave Details:</h2>
+		<form action="/slaves/<%=slave.id%>?_method=PUT" method="POST">
+			<input type="text" name="name" value="<%=slave.name%>">
+			<input type="submit">
+		</form>
+	</main>
+
+</body>
+</html>
