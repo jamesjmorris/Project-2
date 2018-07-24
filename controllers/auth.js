@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
 router.post("/login", (req, res) => {
 		req.session.loggedIn = true;
 		req.session.displayName = req.body.displayName;
+		req.session.userId = 
 		req.session.username = req.body.username;
 		console.log(req.session);
 		res.redirect("/");

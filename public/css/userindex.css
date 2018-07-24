@@ -1,12 +1,12 @@
 header {
-    background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Gladiators-of-Rome.jpg');
-    background-repeat: no-repeat;
+	background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Gladiators-of-Rome.jpg');
+	background-repeat: no-repeat;
     background-size: 1350px 200px;
     background-position: left bottom;
     height: 200px;
-    width: 1350px;
-    margin: auto;
-    border-radius: 10px;
+	width: 1350px;
+	margin: auto;
+	border-radius: 10px;
 }
 .title {
     margin: 60px auto 60px auto;
@@ -15,21 +15,22 @@ header {
     font-size: 50px;
 }
 body {
-    /*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
-    background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');
-    background-repeat: no-repeat;
+	/*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
+    background-image: url('https://i.ytimg.com/vi/qMO6YNTH8Ho/maxresdefault.jpg');
+	background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
 }
 .mainbody {
-    background-color: #F8ECC2;
-    margin: auto;
+	/*background-color: #F8ECC2;*/
+    background-color: rgba(248,236,194, 0.9);
+	margin: auto;
     height:1000px;
     width: 1350px;
     border-radius: 10px;
 }
 .logout {
-    margin: 0px 0px 0px 898px;
+    margin: 0px 0px 0px 938px;
 }
 
 

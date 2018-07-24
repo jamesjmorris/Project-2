@@ -8,6 +8,17 @@ const User = require("../models/user");
 const Slave = require("../models/slave");
 
 
+
+router.get('/', (req, res) => {
+  User.find({}, (err, foundUsers) => {
+      res.render('user/index.ejs', {
+        users: foundUsers
+      });
+  });
+});
+
+
+
 // User Registration
 router.get("/new", async (req, res) => {
 	res.render("user/new.ejs");

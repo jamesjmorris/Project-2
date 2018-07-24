@@ -8,16 +8,12 @@ const Slave = require("../models/slave");
 const User = require("../models/user");
 
 
-// Create Route
-router.get("/new", async (req, res) => {
-	try {
-		const currentUser = await User.find({});
-		res.render("slave/new.ejs", {
-			"slaves": allSlaves
-		})
-	} catch (err) {
-		res.send(err);
-	}
+router.get('/', (req, res) => {
+  Slave.find({}, (err, foundSlaves) => {
+      res.render('slave/index.ejs', {
+        slaves: foundSlaves
+      });
+  });
 });
 
 router.post("/", async (req, res) => {
@@ -32,6 +28,30 @@ router.post("/", async (req, res) => {
 	}
 });
 
+// Create Route
+router.get('/new', (req, res) => {
+  res.render('slave/new.ejs');
+});
+
+// Edit Route
+router.get("/:id/edit", async (req, res) => {
+    const foundSlave = await Slave.findById(req.params.id);
+    console.log(`foundSlave: ${foundSlave}`);
+    res.render("slave/edit.ejs", {
+        "slave": foundSlave,
+    })
+});
+
+router.put("/:id", async (req, res) => {
+    try {
+        const updatedSlave = await Slave.findByIdAndUpdate(req.params.id, req.body, {new: true} );
+        console.log(`updatedSlave: ${updatedSlave}`);
+        const currentUser = await User.findOne({ _id: req.session.userId });
+        console.log(`currentUser.slaves: ${currentUser.slaves}`);
+        } catch (err) {
+        res.send(err)
+    }
+});
 
 // Delete Route
 router.delete("/:id", async (req, res) => {
