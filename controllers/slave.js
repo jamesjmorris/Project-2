@@ -4,8 +4,9 @@ console.log("controllers/slave.js is running...");
 // Required npm models
 const express = require("express");
 const router = express.Router();
-const Slave = require("../models/slave");
 const User = require("../models/user");
+const Slave = require("../models/slave");
+const Tourney = require("../models/tourney");
 
 
 // Index Route

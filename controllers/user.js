@@ -6,6 +6,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const Slave = require("../models/slave");
+const Tourney = require("../models/tourney");
+
 
 // Index Route
 router.get("/", async (req, res) => {
@@ -18,6 +20,7 @@ router.get("/", async (req, res) => {
 		res.send(err)
 	}
 });
+
 
 // New Route
 router.get("/new", async (req, res) => {
@@ -57,7 +60,8 @@ router.delete("/:id", async (req, res) => {
 			slaveIds.push(deletedUser.slaves[i]._id);
 		}
 		Slave.remove( { _id: { $in: slaveIds } } );
-		res.redirect("/users");
+		req.session.loggedIn = false;
+		res.redirect("/auth");
  	} catch (err) {
  		res.send(err)
 	}
