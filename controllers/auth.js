@@ -47,7 +47,6 @@ router.post("/login", async (req, res) => {
 				res.redirect("/")
 			} else {
 				console.log("logging in")
-				console.log(req.body.id);
 				req.session.loggedIn = true;
 				req.session.displayName = loginAttempt.displayName;
 				req.session.userId = loginAttempt.id;

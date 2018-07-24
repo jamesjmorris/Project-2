@@ -67,10 +67,12 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
 	try {
 		const deletedSlave = await Slave.findByIdAndRemove(req.params.id);
-		const foundUser = await User.findOne({"slaves._id":req.params.id});
-		foundUser.slaves.id(req.params.id).remove();
-		foundUser.save();
-		res.reirect("/users")
+		console.log(`deletedSlave: ${deletedSlave}`);
+		const currentUser = await User.findOne({"slaves._id":req.params.id});
+		console.log(`currentUser: ${currentUser}`);
+		currentUser.slaves.id(req.params.id).remove();
+		const savedCurrentUser = await currentUser.save();
+		res.redirect("/slaves");
 	} catch (err) {
 		res.send(err)
 	}
@@ -88,21 +90,13 @@ router.get("/:id/edit", async (req, res) => {
 router.put("/:id", async (req, res) => {
 	try {
 		const updatedSlave = await Slave.findByIdAndUpdate(req.params.id, req.body, {new: true} );
-		console.log(`updatedSlave: ${updatedSlave}`);
 		const currentUser = await User.findOne({"slaves._id":req.params.id});
-		console.log(`currentUser: ${currentUser}`);
 		currentUser.slaves.id(req.params.id).remove();
-		console.log(`currentUser post delete: ${currentUser}`);
-		console.log(`updatedSlave post delete: ${updatedSlave}`);
 		const savedCurrentUser = await currentUser.save();
 		const newUser = await User.findById(req.session.userId);
-		console.log(`newUser: ${newUser}`);
 		newUser.slaves.push(updatedSlave);
 		const savedNewUser = await newUser.save();
-		console.log(`savedNewUser: ${savedNewUser}`);
 		res.redirect("/slaves");
-
-
 	} catch (err) {
 		res.send(err)
 	}

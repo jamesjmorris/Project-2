@@ -25,8 +25,8 @@
 			<ul>
 				<li><%=slave.name%></li>
 				<a href="/slaves/<%=slave.id%>/edit">Change Name</a>
-				<form action="/slaves/<%=slave.id%>?_method="DELETE">
-					<button>Retire Gladiator</button>
+				<form action="/slaves/<%=slave.id%>?_method=DELETE" method="POST">
+					<button type="submit">Retire Gladiator</button>
 				</form>
 			</ul>
 		</section>
