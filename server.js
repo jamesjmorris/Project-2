@@ -33,6 +33,10 @@ app.use("/users", userController);
 const slaveController = require("./controllers/slave.js");
 app.use("/slaves", slaveController);
 
+// Tourney controller
+const tourneyController = require("./controllers/tourney.js");
+app.use("/tourney", tourneyController);
+
 // Auth controller
 const authController = require("./controllers/auth.js");
 app.use("/auth", authController);

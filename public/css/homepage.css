@@ -1,0 +1,84 @@
+header {
+	background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Gladiators-of-Rome.jpg');
+	background-repeat: no-repeat;
+    background-size: 1350px 200px;
+    background-position: left bottom;
+    height: 200px;
+	width: 1350px;
+	margin: auto;
+	border-radius: 10px;
+}
+.title {
+    margin: 60px auto 60px auto;
+    /*color: #905923;*/
+    font-family: Luminari, fantasy;
+    font-size: 50px;
+    text-align: center;
+}
+.welcome {
+    font-family: Luminari, fantasy;
+    padding:10px;
+    text-align: center;
+}
+body {
+	/*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
+    background-image: url('https://thumbs.dreamstime.com/b/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');
+	background-repeat: no-repeat;
+    background-size: cover;
+    /*text-align: center;*/
+}
+.mainbody {
+	/*background-color: #F8ECC2;*/
+    background-color: rgba(248,236,194, 0.9);
+	margin: auto;
+    height:1000px;
+    width: 1350px;
+    border-radius: 10px;
+}
+
+
+
+/*navbar CSS*/
+.navbar{
+    width: 1350px;
+    margin: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+/*navbar CSS*/
+/*ul {
+    width: 1350px;
+    margin: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}*/
+
+.navbarli {
+    float: left;
+}
+
+.navbarlia {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+#logout {
+    float: left;
+    margin: 0px 0px 0px 898px;
+}

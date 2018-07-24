@@ -5,26 +5,44 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+	<link rel="stylesheet" type="text/css" href="css/userindex.css">
+
 	<title>Users Index</title>
+
 </head>
 <body>
+	<h1 class='title'>User Index Page</h1>
 
-	<header>
-		<h1>Users List</h1>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/users/new">Create and Account</a></li>
-			</ul>
-		</nav>
-	</header>
+
+
+		<h1 class='title'>Users List</h1>
+
+	<ul class='navbar'>
+  		<li><a href="/">Front Page</a></li>
+  		<li><a href="/slave">Slave Barracks</a></li>
+  		<li><a href="/tourney">Colosseum</a></li>
+  		<li><a class='logout' href="/logout">Logout</a></li>
+	</ul>
+	
 	<main>
 		<% for (let i = 0; i < users.length; i++) { %>
 			<h2><li><a href="/users/<%-users[i].id%>"><%=users[i].displayName%></a></li></h2>
 			<a href="/users/<%=users[i].id%>/edit">Edit Details</a>
 		<% } %>
 	</main>
+  
+  <div class='mainbody'>
+	<div>
+		Some sick game rules<p/>
+	</div>
+	<div>
 
 </body>
 </html>
 
+
+
+
+	

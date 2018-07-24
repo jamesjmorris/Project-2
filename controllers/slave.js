@@ -9,6 +9,7 @@ const Slave = require("../models/slave");
 const Tourney = require("../models/tourney");
 
 
+
 // Index Route
 router.get("/", async (req, res) => {
 	try {
@@ -61,6 +62,11 @@ router.get("/:id", async (req, res) => {
 	} catch (err) {
 		res.send(err)
 	}
+});
+
+// Create Route
+router.get('/new', (req, res) => {
+  res.render('slave/new.ejs');
 });
 
 

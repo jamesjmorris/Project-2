@@ -16,13 +16,14 @@ header {
 }
 body {
     /*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
-    background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');
+    background-image: url('https://images3.alphacoders.com/166/thumb-1920-166799.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
 }
 .mainbody {
-    background-color: #F8ECC2;
+    /*background-color: #F8ECC2;*/
+    background-color: rgba(248,236,194, 0.9);
     margin: auto;
     height:1000px;
     width: 1350px;

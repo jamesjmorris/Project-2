@@ -7,18 +7,41 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="css/homepage.css">
 </head>
 <body>
 
-<header>
-	<h1>Welcome to Gladiator Gambler</h1>
-	<nav>
+
+	<h1 class='title'>Gladiator Gambler</h1>
+
+<div>
+	<ul class='navbar'>
+  		<li class='navbarli'><a class='navbarlia' href="/slave">Active Gladiators</a></li>
+  		<li class='navbarli'><a class='navbarlia' href="/tourney">Colosseum</a></li>
+  		<li class='navbarli'><a class='navbarlia' href="/user">Active Users</a></li>
+  		<li id='logout'><a class='navbarlia' href="/logout">Logout</a></li>
+	</ul>
+	</div>
+
+
+<div class='mainbody'>
+		<h2 class='welcome'>Welcome, <%=displayName%></h2>
+
 		<ul>
-			<li><a href="/users">Active Users</a></li>
-			<li><a href="/slaves">Active Gladiators</a></li>
+			<h4>Updates</h4>
 		</ul>
-	</nav>
-</header>
+		
+		<ul>
+			<li>Created "basic" website.</li>
+			<li>Something something something</li>
+			<li></li>
+		</ul>
+		
+</div>
+	<div>
+		Some dope tournaments<p/>
+	</div>
+</div>
 
 </body>
 </html> 
