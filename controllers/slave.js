@@ -80,32 +80,29 @@ router.delete("/:id", async (req, res) => {
 // Edit Route
 router.get("/:id/edit", async (req, res) => {
 	const foundSlave = await Slave.findById(req.params.id);
-	const allUsers = await User.find({});
-	const foundSlaveUser = await User.findOne({"slaves._id":req.params.id});
 	res.render("slave/edit.ejs", {
 		"slave": foundSlave,
-		"users": allUsers,
-		"slaveUser": foundSlaveUser
 	})
 });
 
 router.put("/:id", async (req, res) => {
 	try {
-		const updatedSlave = await Slave.findByIdAndUpdate(req.params.id, {name: req.body.name});
-		const foundUser = await User.findOne({"slaves._id":req.params.id});
-		if (foundUser._id.toString() !== req.body.userId) {
-			foundUser.slaves.id(req.params.id).remove();
-			const savedFoundUser = await foundUser.save();
-			const newUser = await User.findById(req.body.userId);
-			newUser.slaves.push(updatedSlave);
-			const savedNewUser = await newUser.save();
-			res.redirect("/slaves/"+req.params.id);
-		} else {
-			foundUser.slaves.id(req.params.id).remove();
-			foundUser.slaves.push(updatedSlave);
-			const data = await foundUser.save();
-			res.redirect("/slaves/"+req.params.id);
-		}
+		const updatedSlave = await Slave.findByIdAndUpdate(req.params.id, req.body, {new: true} );
+		console.log(`updatedSlave: ${updatedSlave}`);
+		const currentUser = await User.findOne({"slaves._id":req.params.id});
+		console.log(`currentUser: ${currentUser}`);
+		currentUser.slaves.id(req.params.id).remove();
+		console.log(`currentUser post delete: ${currentUser}`);
+		console.log(`updatedSlave post delete: ${updatedSlave}`);
+		const savedCurrentUser = await currentUser.save();
+		const newUser = await User.findById(req.session.userId);
+		console.log(`newUser: ${newUser}`);
+		newUser.slaves.push(updatedSlave);
+		const savedNewUser = await newUser.save();
+		console.log(`savedNewUser: ${savedNewUser}`);
+		res.redirect("/slaves");
+
+
 	} catch (err) {
 		res.send(err)
 	}

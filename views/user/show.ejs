@@ -23,7 +23,7 @@
 		<section>Owned Slaves</section>
 		<ul>
 			<% for (let i = 0; i < user.slaves.length; i++) { %>
-				<li><%=user.slaves[i].name%></li>
+				<li><a href="/slaves/<%=user.slaves[i].id%>"><%=user.slaves[i].name%></a></li>
 			<% } %>
 		</ul>
 	</main>

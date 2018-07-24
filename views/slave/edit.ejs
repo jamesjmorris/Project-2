@@ -22,7 +22,7 @@
 
 	<main>
 		<h2>Slave Details:</h2>
-		<form action="/slaves/<%=slave._id%>?_method=PUT" method="POST">
+		<form action="/slaves/<%=slave.id%>?_method=PUT" method="POST">
 			<input type="text" name="name" value="<%=slave.name%>">
 			<input type="submit">
 		</form>
