@@ -6,6 +6,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script type="text/javascript">
+		// This is a function that will randomize the name of each slave as it's created.
+		const namesList = ["Julianus Dama", "Vel Angelus", "Tertius Valens", "Lucius Ecdicius", "Caelus Constans", "Marcellus Balbus", "Opiter Postumus"];
+		const namesGenerated = [];
+		const generateName = () => {
+			for (let i = 0; i < 4; i++) {
+
+			};
+		};
+	</script>
 	<title>Market</title>
 </head>
 <body>
@@ -21,6 +31,8 @@
 	</header>
 
 	<main>
+
+		<button onclick="generateName()">Generate Name</button>
 
 		<form action="/slaves" method="POST">
 			<input type="text" name="name" placeholder="new slave name">

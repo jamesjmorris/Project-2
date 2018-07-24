@@ -10,6 +10,3 @@ const Tourney = require("../../models/tourney");
 
 
 module.exports = {};
-
-
-	$(".generateName").on("click", gnerateName());

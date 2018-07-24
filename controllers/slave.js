@@ -25,8 +25,7 @@ router.get("/", async (req, res) => {
 // New Route
 router.get("/new", async (req, res) => {
 	try {
-		res.render("slave/new.ejs", {
-		});
+		res.render("slave/new.ejs");
 	} catch (err) {
 		res.send(err);
 	}
@@ -35,7 +34,6 @@ router.get("/new", async (req, res) => {
 router.post("/", async (req, res) => {
 	try {
 		const foundUser = await User.findById(req.session.userId);
-		const newSlave = await Slave.create({name: req.body.name});
 		foundUser.slaves.push(newSlave);
 		const data = await foundUser.save();
 		res.redirect("/slaves");
