@@ -1,5 +1,37 @@
-<%console.log("views/slave/new.ejs");%>
+<%console.log("views/slave/index.ejs is running...");%>
 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="/css/slaveindex.css">
+</head>
+<body>
+
+	<h1 class='title'>Slave Barracks</h1>
+
+
+	<ul class='navbar'>
+  		<li><a href="/">Front Page</a></li>
+  		<li><a href="/tourney">Colosseum</a></li>
+  		<li><a href="/user">Account Setting</a></li>
+  		<li><a href="/slave/new">Purchase Slave</a></li>
+  		<li><a class='logout' href="/logout">Logout</a></li>
+	</ul>
+
+
+<div class='mainbody'>
+	<h4>Gladiators List</h4>
+
+	<%for(i = 0; i < slave.length; i) {++%>
+	<ul>
+		<li><a href="slave/:id"></a>slave[i].name</li>
+	</ul>
+	<% } %>
+</div>
+	
 
 <!DOCTYPE html>
 <html>

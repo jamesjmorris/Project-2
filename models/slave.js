@@ -16,6 +16,7 @@ const slaveSchema = mongoose.Schema({
 	img: String,
 	hp: Number,
 	atk: Number,
+
 });
 
 slaveSchema.methods.attack = (min, max) => {
