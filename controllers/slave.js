@@ -27,7 +27,7 @@ const generateSlave = () => {
   };
 };
 
-Slave.remove({}, (err, reset) => {
+const clearDb = Slave.remove({}, (err, reset) => {
 	if (err) {
 		console.log(err);
 	} else {
@@ -60,6 +60,7 @@ router.get("/new", async (req, res) => {
 	try {
 		await generateSlave();
 		const allSlaves = await Slave.find({})
+		await clearDb;
 		console.log(`allSlaves: ${allSlaves}`);
 		// req.session.availableGladiators = [];
 		// req.session.availableGladiators.push(allSlaves);
