@@ -12,7 +12,7 @@ const tourneySchema = mongoose.Schema({
 	fighters: []
 });
 
-tourneySchema.methods.runTourney = function() {
+tourneySchema.methods.runTourney = () => {
 	console.log("ROUND START");
 };
 
