@@ -34,12 +34,9 @@ router.get("/new", async (req, res) => {
 router.post("/", async (req, res) => {
 	try {
 		const foundUser = await User.findById(req.session.userId);
-		console.log(`foundUser: ${foundUser}`);
 		const newSlave = await Slave.create({name: req.body.name});
-		console.log(`newSlave: ${newSlave}`);
 		foundUser.slaves.push(newSlave);
 		const data = await foundUser.save();
-		console.log(`foundUser: ${foundUser}`);
 		res.redirect("/slaves");
 	} catch (err) {
 		res.send(err)

@@ -14,4 +14,6 @@ const slaveSchema = mongoose.Schema({
 	atk: Number
 });
 
+const namesList = ["Julianus Dama", "Vel Angelus", "Tertius Valens", "Lucius Ecdicius", "Caelus Constans", "Marcellus Balbus", "Opiter Postumus"];
+
 module.exports = mongoose.model("Slave", slaveSchema);
