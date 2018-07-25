@@ -27,6 +27,7 @@ const generateSlave = () => {
   };
 };
 
+// Clear the database
 const clearDb = Slave.remove({}, (err, reset) => {
 	if (err) {
 		console.log(err);
@@ -36,16 +37,12 @@ const clearDb = Slave.remove({}, (err, reset) => {
 });
 
 
-
-
 // Index Route
 router.get("/", async (req, res) => {
 	try {
 		const reset = await Slave.remove({})
 		const allSlaves = await Slave.find({})
 		console.log(`allSlaves: ${allSlaves}`);
-		// req.session.availableGladiators = [];
-		// console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
 		res.render("slave/index.ejs", {
 			"slaves": allSlaves
 		})
@@ -62,9 +59,6 @@ router.get("/new", async (req, res) => {
 		const allSlaves = await Slave.find({})
 		await clearDb;
 		console.log(`allSlaves: ${allSlaves}`);
-		// req.session.availableGladiators = [];
-		// req.session.availableGladiators.push(allSlaves);
-		// console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
 		res.render("slave/new.ejs", {
 			"slaves": allSlaves
 		});
