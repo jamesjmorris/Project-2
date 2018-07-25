@@ -59,14 +59,19 @@ router.post("/login", async (req, res) => {
 });
 
 
+
 router.get("/logout", async (req, res) => {
-	req.sessions.destroy((err) => {
+	try {
+	req.session.destroy((err) => {
 		if (err) {
-			res.send("Error destroying sesion")
+			res.send("Error destroying session")
 		} else {
-			res.redirect("/")
+			res.redirect("/auth")
 		}
 	})
+} catch {
+	res.send(err)
+}
 });
 
 module.exports = router;

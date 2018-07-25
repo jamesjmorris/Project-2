@@ -6,25 +6,55 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>User Login</title>
+	<title>Gladiator Gambler -Login-</title>
+	<link rel="stylesheet" type="text/css" href="css/auth.css">
 </head>
-<div>
-	<h3>Login</h3>
-<form action="/auth/login" method="post">
-	Display Name: <input type="text" name="displayName" placeholder="Display Name"><br>
-	Email: <input type="text" name="username" placeholder="you@email.com"><br>
-	Password: <input type="password" name="password" placeholder="password"><br>
-	<button type="submit">Login</button>
-</form><br>
-<h3>Create an Account</h3>
 <body>
-  	<form action="/auth/register" method="POST">
-  	Display Name: <input type="text" name="displayName" placeholder="Display Name"><br>
-    Email: <input type="text" name="username" placeholder="you@email.com"><br>
-    Password: <input type="password" name="password" placeholder="password"><br>
-    <input type="submit" name="Submit">
-  </form>
-</div><br/>
+	<h2 class='title'>Welcome to,</h2>
+	<h1 class='title'>Gladiator Gamble</h1>
+
+	<div class="login">
+		<h3>Sign In</h3>
+		
+		<form action="/auth/login" method="post">
+			Display Name: </br> <input type="text" name="displayName" placeholder="Display Name" autocomplete="off"><br>
+			Email: </br><input type="text" name="username" placeholder="you@email.com" autocomplete="off"><br>
+			Password: </br><input type="password" name="password" placeholder="password" autocomplete="off"><br>
+			<button class="loginbutton" type="submit">Login</button>
+		</form>
+
+
+		<form>
+			<h4>New to gambling Addiction???</h4>
+			<button id="register" type="Register">Register</button>
+		</form>
+
+
+	</div>
+
+
+
+
+	<div>
+		<h3>Create an Account</h3>
+  		<form action="/auth/register" method="POST">
+  			Display Name: <input type="text" name="displayName" placeholder="Display Name"><br>
+    		Email: <input type="text" name="username" placeholder="you@email.com"><br>
+    		Password: <input type="password" name="password" placeholder="password"><br>
+    		<input type="submit" name="Submit">
+  		</form>
+	</div><br/>
 <%=message%>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html> 

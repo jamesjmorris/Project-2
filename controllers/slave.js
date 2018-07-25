@@ -47,6 +47,20 @@ router.post("/", async (req, res) => {
 	}
 });
 
+// Like options
+router.post('/:id/like', async (req,res) => {
+	try{
+		console.log(req.user);
+		await req.user.slaves.push(req.params.id);
+		await req.user.save();
+		res.redirect('/users')
+	} catch (err) {
+		res.send(err);
+	}
+})
+
+
+
 
 // Show Route
 router.get("/:id", async (req, res) => {
