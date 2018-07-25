@@ -9,10 +9,43 @@ const Slave = require("../models/slave");
 const Tourney = require("../models/tourney");
 
 
+// Functions and Variables
+// Slaves collection reset
+// Slave.remove({}, (err, reset) => {
+// 	if (err) {
+// 		console.log(err, "Failed to clear slaves collection.");
+// 	} else {
+// 		console.log(reset, "Slaves collection cleared.");
+// 	}
+// });
+
+// Generates a new slave with randomized data.
+const namesList = ["Julianus Dama", "Vel Angelus", "Tertius Valens", "Lucius Ecdicius", "Caelus Constans", "Marcellus Balbus", "Opiter Postumus"];
+const generateSlave = () => {
+  for (let i = 0; i < 4; i++) {
+    Slave.create({ name: namesList[Math.floor(Math.random()*namesList.length)], hp: Math.floor(Math.random() * (36 - 12) + 12), atk: Math.floor(Math.random() * (27 - 1) + 1) });
+  };
+};
+
+Slave.remove({}, (err, reset) => {
+	if (err) {
+		console.log(err);
+	} else {
+		console.log(reset);
+	}
+});
+
+
+
+
 // Index Route
 router.get("/", async (req, res) => {
 	try {
+		const reset = await Slave.remove({})
 		const allSlaves = await Slave.find({})
+		console.log(`allSlaves: ${allSlaves}`);
+		req.session.availableGladiators = [];
+		console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
 		res.render("slave/index.ejs", {
 			"slaves": allSlaves
 		})
@@ -23,10 +56,17 @@ router.get("/", async (req, res) => {
 
 
 // New Route
-const availableSlaves = [];
 router.get("/new", async (req, res) => {
 	try {
-		res.render("slave/new.ejs");
+		await generateSlave();
+		const allSlaves = await Slave.find({})
+		console.log(`allSlaves: ${allSlaves}`);
+		req.session.availableGladiators = [];
+		req.session.availableGladiators.push(allSlaves);
+		console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
+		res.render("slave/new.ejs", {
+			"availableGladiators": req.session.availableGladiators
+		});
 	} catch (err) {
 		res.send(err);
 	}

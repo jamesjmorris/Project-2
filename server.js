@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const Slave = require("./models/slave");
 
 
 // Required database
@@ -82,7 +83,6 @@ app.use(require('express-session')({
 
 // Home Route
 app.get("/", (req, res) => {
-	console.log("Home Route");
 	res.render("index.ejs", {
 		"displayName": req.session.displayName,
 		"userId": req.session._id

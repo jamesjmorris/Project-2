@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 
 
 // Register new user
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
 	let message = "";
 	if (req.session.message) {
 		message = req.session.message
