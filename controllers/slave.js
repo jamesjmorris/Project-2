@@ -44,8 +44,8 @@ router.get("/", async (req, res) => {
 		const reset = await Slave.remove({})
 		const allSlaves = await Slave.find({})
 		console.log(`allSlaves: ${allSlaves}`);
-		req.session.availableGladiators = [];
-		console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
+		// req.session.availableGladiators = [];
+		// console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
 		res.render("slave/index.ejs", {
 			"slaves": allSlaves
 		})
@@ -61,11 +61,11 @@ router.get("/new", async (req, res) => {
 		await generateSlave();
 		const allSlaves = await Slave.find({})
 		console.log(`allSlaves: ${allSlaves}`);
-		req.session.availableGladiators = [];
-		req.session.availableGladiators.push(allSlaves);
-		console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
+		// req.session.availableGladiators = [];
+		// req.session.availableGladiators.push(allSlaves);
+		// console.log(`req.session.availableGladiators: ${req.session.availableGladiators}`);
 		res.render("slave/new.ejs", {
-			"availableGladiators": req.session.availableGladiators
+			"slaves": allSlaves
 		});
 	} catch (err) {
 		res.send(err);
