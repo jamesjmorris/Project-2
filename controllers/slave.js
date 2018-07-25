@@ -40,8 +40,8 @@ const clearDb = Slave.remove({}, (err, reset) => {
 // Index Route
 router.get("/", async (req, res) => {
 	try {
-		const reset = await Slave.remove({})
 		const allSlaves = await Slave.find({})
+		await clearDb;
 		console.log(`allSlaves: ${allSlaves}`);
 		res.render("slave/index.ejs", {
 			"slaves": allSlaves
@@ -57,8 +57,8 @@ router.get("/new", async (req, res) => {
 	try {
 		await generateSlave();
 		const allSlaves = await Slave.find({})
-		await clearDb;
 		console.log(`allSlaves: ${allSlaves}`);
+		await clearDb;
 		res.render("slave/new.ejs", {
 			"slaves": allSlaves
 		});
@@ -69,10 +69,13 @@ router.get("/new", async (req, res) => {
 
 router.post("/", async (req, res) => {
 	try {
-		// const foundUser = await User.findById(req.session.userId);
-		// const newSlave = await Slave.create({name: req.body.name});
+		const foundUser = await User.findById(req.session.userId);
+		console.log(`foundUser: ${foundUser}`);
+		const purchasedSlaves = await Slave.findById([req.body.name]);
+		console.log(`purchasedSlaves: ${purchasedSlaves}`);
+		// const purchasedSlaves = (req.body);
 		// foundUser.slaves.push(newSlave);
-		const data = await foundUser.save();
+		// const data = await foundUser.save();
 		res.redirect("/slaves");
 	} catch (err) {
 		res.send(err)

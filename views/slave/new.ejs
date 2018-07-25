@@ -21,10 +21,14 @@
 	</header>
 
 	<main>
+		<h3>Slaves Available for Purchase</h3>
 		<ul>
-			<% for (let i = 0; i < slaves.length; i++) { %>
-				<li><%=slaves[i].name%></li>
-			<% } %>
+			<form action="/slaves" method="POST">
+				<% for (let i = 0; i < slaves.length; i++) { %>
+					<input type="checkbox" name="<%=slaves[i].id%>" value="<%slaves[i]%>"><%=slaves[i].name%><br>
+				<% } %>
+				<input type="submit" value="Submit">
+			</form>	
 		</ul>
 	</main>
 
