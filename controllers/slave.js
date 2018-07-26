@@ -65,7 +65,7 @@ router.get("/new", async (req, res) => {
 router.post("/:id/purchase", async (req, res) => {
 	try {
 		const foundUser = await User.findById(req.session.userId);
-		const foundSlave = await Slave.findOne(req.params.id);
+		const foundSlave = await Slave.findById(req.params.id);
 		foundUser.slaves.push(foundSlave);
 		const savedUser = await foundUser.save();
 		console.log(`savedUser: ${savedUser}`);
@@ -85,6 +85,16 @@ router.post("/:id/enterTournament", async (req, res) => {
 		selectedTournament.fighters.push(selectedSlave);
 		const savedTournament = await selectedTournament.save();
 		console.log(`savedTournament: ${savedTournament}`);
+		if (selectedTournament.fighters.length === selectedTournament.capacity) {
+			console.log(`${selectedTournament.name} is full! Begin the tournament!`);
+			if (selectedTournament.fighters[0].pwr > selectedTournament.fighters[1].pwr) {
+				console.log(`${selectedTournament.fighters[0].name} has won the round!`);
+			} else {
+				console.log(`${selectedTournament.fighters[1].name} has won the round!`);
+			}
+		} else {
+			console.log(`There are ${selectedTournament.capacity - selectedTournament.fighters.length } spots left in this tournament`);
+		}
 	} catch (err) {
 		res.send(err)
 	}
