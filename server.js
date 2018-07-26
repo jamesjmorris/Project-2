@@ -27,16 +27,6 @@ app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
 
-// Clear the database
-// const clearDb = Slave.remove({}, (err, reset) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("Slave database cleared.");
-//   }
-// });
-
-
 // Required controllers for router
 // Tournaments controller
 const tournamentController = require("./controllers/tourney");

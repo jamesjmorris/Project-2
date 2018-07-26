@@ -6,26 +6,37 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="css/tourneyindex.css">
 	<title>Tourney Index</title>
 </head>
 <body>
 
 	<header>
-		<h1>Active Tournaments</h1>
 		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/tourneys/new">Sponsor a Tournament</a></li>
-			</ul>
+			<div>
+				<ul class='navbar'>
+			  		<li><a href="/">Home</a></li>
+			  		<li><a href="/users/<%=user.id%>"><%=user.displayName%></a></li>
+			  		<li><a class='logout' href="auth/logout">Logout</a></li>
+				</ul>
+			</div>
 		</nav>
 	</header>
 
 	<main>
-		<ul>
-			<% for (let i = 0; i < tourneys.length; i++) { %>
-				<li><a href="/tourneys/<%=tourneys[i].id%>"><%=tourneys[i].name%></a></li>
-			<% } %>
-		</ul>
+	<h1>Active Tournaments</h1>
+	<h3><a href="/tourneys/<%=tourneys[0].id%>">The Bronze Cup</a></h3>
+    <ul class="round round-1">
+        <li class="spacer">&nbsp;</li>
+        <li class="game game-top winner"><%=tourneys[0].fighters[0].name%><span>79</span></li>
+        <li class="game game-spacer">&nbsp;</li>
+        <li class="game game-bottom "><%=tourneys[0].fighters[1].name%><span>48</span></li>
+        <li class="spacer">&nbsp;</li>  
+    </ul>
+    <ul class="round round-2">
+        <li class="spacer">&nbsp;</li>
+        <li class="game game-top winner">Lousville <span>82</span></li>
+    </ul>
 	</main>
 
 </body>

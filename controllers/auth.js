@@ -5,8 +5,25 @@ console.log("controllers/auth.js is running...");
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const Tourney = require("../models/tourney");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
+
+
+// Clear Tournament Database
+const clearTourneys = Tourney.remove({}, (err, reset) => {
+	if (err) {
+		console.log(err)
+	} else {
+		console.log("Tournament database cleared.");
+	}
+})
+
+
+// Available Tournaments
+const bronzeCup = Tourney.create({name: "Bronze Cup", capacity: 2, fighters: ["Spot Open", "Spot Open"], roundWinners: ["TBA"]});
+const silverCup = Tourney.create({name: "Silver Cup", capacity: 4, fighters: ["Spot Open", "Spot Open"], roundWinners: ["TBA"]});
+const goldCup = Tourney.create({name: "Gold Cup", capacity: 8, fighters: ["Spot Open", "Spot Open"], roundWinners: ["TBA"]});
 
 
 // Register new user

@@ -12,9 +12,11 @@ const Tourney  = require("../models/tourney");
 // Index Route
 router.get("/", async (req, res) => {
 	try {
+		const currentUser = await User.findById(req.session.userId);
 		const allTourneys = await Tourney.find({})
 		res.render("tourney/index.ejs", {
-			"tourneys": allTourneys
+			"tourneys": allTourneys,
+			"user": currentUser
 		})
 	} catch (err) {
 		res.send(err)
@@ -41,20 +43,23 @@ router.post("/", async (req, res) => {
 });
 
 
-// // Tournament Entry Route
-// router.post("/:id/enterTournament", async (req, res) => {
-// 	try {
-// 		const selectedSlave = await Slave.findById(req.body.id);
-// 		console.log(`selectedSlave: ${selectedSlave}`);
-// 		// const selectedTournament = await Tourney.findById(req.params.id);
-// 		// console.log(`selectedTournament: ${selectedTournament}`);
-// 		// selectedTournament.fighters.push(selectedSlave);
-// 		// const savedTournament = await selectedTournament.save();
-// 		// console.log(`savedTournament: ${savedTournament}`);
-// 	} catch (err) {
-// 		res.send(err)
-// 	}
-// });
+// Tournament Begin
+router.post("/:id/beginTournament", async (req, res) => {
+	try {
+		const selectedSlave = await Slave.findById(req.params.id);
+		console.log(`selectedSlave: ${selectedSlave}`);
+		const selectedTournament = await Tourney.findOne({name: "Bronze Cup"});
+		console.log(`selectedTournament: ${selectedTournament}`);
+		console.log(`${selectedTournament} has begun!`);
+		if (selectedTournament.fighters[0].pwr > selectedTournament.fighters[1].pwr) {
+			console.log(`${selectedTournament.fighters[0].name} has won the round!`);
+		} else {
+			console.log(`${selectedTournament.fighters[1].name} has won the round!`);
+		}
+	} catch (err) {
+		res.send(err)
+	}
+});
 
 
 // Show Route

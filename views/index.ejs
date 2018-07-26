@@ -6,20 +6,43 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="css/homepage.css">
 	<title>Home Page</title>
 </head>
 <body>
 
 <header>
-	<h1>Welcome to Gladiator Gambler</h1>
+	<h1 class='title'>Welcome to Gladiator Gambler</h1>
 	<nav>
-		<ul>
-			<li><a href="/users/<%=userId%>">Profile Page</a></li>
-			<li><a href="/slaves/new">Slave Market</a></li>
-			<li><a href="/tourneys">Active Tourneys</a></li>
-		</ul>
+		<div>
+			<ul class='navbar'>
+		  		<li class='navbarli'><a class='navbarlia' href="/slaves/new">Slave Market</a></li>
+		  		<li class='navbarli'><a class='navbarlia' href="/tourneys">Colosseum</a></li>
+		  		<li class='navbarli'><a class='navbarlia' href="/users/<%=userId%>"><%=displayName%></a></li>
+		  		<li id='logout'><a class='navbarlia' href="auth/logout">Logout</a></li>
+			</ul>
+		</div>
 	</nav>
 </header>
+
+<div class='mainbody'>
+		<h2 class='welcome'>Welcome, <%=displayName%></h2>
+
+		<ul>
+			<h4>Updates</h4>
+		</ul>
+		
+		<ul>
+			<li>Created "basic" website.</li>
+			<li>Something something something</li>
+			<li></li>
+		</ul>
+		
+</div>
+	<div>
+		Some dope tournaments<p/>
+	</div>
+</div>
 
 </body>
 </html> 

@@ -6,22 +6,30 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="css/auth.css">
 	<title>User Login</title>
 </head>
-<div>
-	<h3>Login</h3>
-<form action="/auth/login" method="post">
-	Display Name: <input type="text" name="displayName" placeholder="Display Name"><br>
-	Email: <input type="text" name="username" placeholder="you@email.com"><br>
-	Password: <input type="password" name="password" placeholder="password"><br>
-	<button type="submit">Login</button>
-</form><br>
-<h3>Create an Account</h3>
+
 <body>
+	<h2 class='title'>Welcome to,</h2>
+	<h1 class='title'>Gladiator Gamble</h1>
+
+
+	<div class="login">
+		<h3>Login</h3>
+			<form action="/auth/login" method="post">
+				Display Name: <input type="text" name="displayName" placeholder="Display Name"><br>
+				Email: <input type="text" name="username" placeholder="you@email.com"><br>
+				Password: <input type="password" name="password" placeholder="password"><br>
+				<button type="submit">Login</button>
+			</form><br>
+
+<h3>Create an Account</h3>
+
   	<form action="/auth/register" method="POST">
-  	Display Name: <input type="text" name="displayName" placeholder="Display Name"><br>
-    Email: <input type="text" name="username" placeholder="you@email.com"><br>
-    Password: <input type="password" name="password" placeholder="password"><br>
+	  	Display Name: <input type="text" name="displayName" placeholder="Display Name"><br>
+	    Email: <input type="text" name="username" placeholder="you@email.com"><br>
+	    Password: <input type="password" name="password" placeholder="password"><br>
     <input type="submit" name="Submit">
   </form>
 </div><br/>

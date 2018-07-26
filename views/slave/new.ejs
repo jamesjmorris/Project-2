@@ -6,24 +6,28 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="/css/slavenew.css">
 	<title>Market</title>
 </head>
 <body>
 
 	<header>
-		<h1>Slave Market</h1>
+		<h1 class='title'>Slave Market</h1>
 		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
+			<ul class='navbar'>
+		  		<li><a href="/">Home</a></li>
+		  		<li><a href="/tourneys">Colosseum</a></li>
+		  		<li><a href="/users/<%=user.id%>"><%=user.displayName%></a></li>
+		  		<li><a class='logout' href="auth/logout">Logout</a></li>
 			</ul>
 		</nav>
 	</header>
 
 	<main>
-		<h3>Slaves Available for Purchase</h3>
+		<h3 class="listtitle">Slaves Available for Purchase</h3>
 		<ul>
 			<% for (let i = 0; i < 4; i++) { %>
-				<h2><%=slaves[i].name%></h2>
+				<h2 class="gladiator"><%=slaves[i].name%></h2>
 					<form action="/slaves/<%=slaves[i].id%>/purchase" method="POST">
 						<button>Purchase</button>
 					</form>

@@ -18,15 +18,6 @@ const generateSlave = () => {
   };
 };
 
-// Clear the database
-// const clearDb = Slave.remove({}, (err, reset) => {
-// 	if (err) {
-// 		console.log(err);
-// 	} else {
-// 		console.log(`Slave database cleared.`);
-// 	}
-// });
-
 
 // Index Route
 router.get("/", async (req, res) => {
@@ -82,18 +73,13 @@ router.post("/:id/enterTournament", async (req, res) => {
 		console.log(`selectedSlave: ${selectedSlave}`);
 		const selectedTournament = await Tourney.findOne({name: "Bronze Cup"});
 		console.log(`selectedTournament: ${selectedTournament}`);
-		selectedTournament.fighters.push(selectedSlave);
-		const savedTournament = await selectedTournament.save();
-		console.log(`savedTournament: ${savedTournament}`);
-		if (selectedTournament.fighters.length === selectedTournament.capacity) {
-			console.log(`${selectedTournament.name} is full! Begin the tournament!`);
-			if (selectedTournament.fighters[0].pwr > selectedTournament.fighters[1].pwr) {
-				console.log(`${selectedTournament.fighters[0].name} has won the round!`);
-			} else {
-				console.log(`${selectedTournament.fighters[1].name} has won the round!`);
-			}
+		if (selectedTournament.fighters[1] === "Spot Open") {
+			const updatedTournament = await selectedTournament.fighters.unshift(selectedSlave);
+			console.log(`updatedTournament: ${updatedTournament}`);
+			const savedTournament = await selectedTournament.save();
+			console.log(`savedTournament: ${savedTournament}`);
 		} else {
-			console.log(`There are ${selectedTournament.capacity - selectedTournament.fighters.length } spots left in this tournament`);
+			console.log(`${selectedTournament.name} is full!`);
 		}
 	} catch (err) {
 		res.send(err)

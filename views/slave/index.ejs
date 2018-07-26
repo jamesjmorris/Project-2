@@ -7,16 +7,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="css/slaveindex.css">
 	<title>Gladiator Index</title>
 </head>
 <body>
 
 	<header>
-		<h1>Active Gladiators</h1>
+		<h1 class='title'>Active Gladiators</h1>
 		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/slaves/new">Slave Market</a></li>
+			<ul class='navbar'>
+		  		<li><a href="/">Front Page</a></li>
+		  		<li><a href="/tourneys">Colosseum</a></li>
+		  		<li><a href="/users/<%=user.id%>"><%=user.displayName%></a></li>
+		  		<li><a href="/slaves/new">Slave Market</a></li>
+		  		<li><a class='logout' href="auth/logout">Logout</a></li>
 			</ul>
 		</nav>
 	</header>
