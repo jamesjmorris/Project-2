@@ -15,7 +15,6 @@
 		<nav>
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="/slaves">Active Gladiators</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -23,13 +22,12 @@
 	<main>
 		<h3>Slaves Available for Purchase</h3>
 		<ul>
-			<form action="/slaves" method="POST">
-				<% for (let i = 0; i < slaves.length; i++) { %>
-					<input type="checkbox" name="<%=slaves[i].id%>" value="<%slaves[i]%>"><%=slaves[i].name%><br>
-				<% } %>
-				<input type="submit" value="Submit">
-			</form>	
-		</ul>
+			<% for (let i = 0; i < slaves.length; i++) { %>
+				<h2><%=slaves[i].name%></h2>
+					<form action="/slaves/<%=slaves[i].id%>/purchase" method="POST">
+						<button>Purchase</button>
+					</form>
+			<% } %>
 	</main>
 
 </body>

@@ -26,6 +26,17 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
+
+// Clear the database
+const clearDb = Slave.remove({}, (err, reset) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Slave database cleared.");
+  }
+});
+
+
 // Required controllers for router
 // Tournaments controller
 const tournamentController = require("./controllers/tourney");
@@ -82,11 +93,17 @@ app.use(require('express-session')({
 
 
 // Home Route
-app.get("/", (req, res) => {
-	res.render("index.ejs", {
-		"displayName": req.session.displayName,
-		"userId": req.session._id
-	})
+app.get("/", async (req, res) => {
+    try {
+      await clearDb;
+      console.log(req.session.userId)
+      res.render("index.ejs", {
+      "displayName": req.session.displayName,
+      "userId": req.session.userId
+    })
+    } catch (err) {
+      res.send(err)
+    }
 });
 
 

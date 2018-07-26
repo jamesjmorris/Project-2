@@ -12,9 +12,9 @@ const Tourney = require("../models/tourney");
 // Index Route
 router.get("/", async (req, res) => {
 	try {
-		const allUsers = await User.find({});
+		const currentUser = await findById(req.session.userId)
 		res.render("user/index.ejs", {
-			"users": allUsers
+			"user": currentUser
 		})
 	} catch (err) {
 		res.send(err)
@@ -40,7 +40,6 @@ router.post("/", async (req, res) => {
 // Show Route
 router.get("/:id", async (req, res) => {
 	try {
-		console.log("Show Route");
 		const currentUser = await User.findById(req.params.id);
 		res.render("user/show.ejs", {
 			"user": currentUser

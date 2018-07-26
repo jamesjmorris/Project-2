@@ -10,20 +10,11 @@ const Tourney = require("../models/tourney");
 
 
 // Functions and Variables
-// Slaves collection reset
-// Slave.remove({}, (err, reset) => {
-// 	if (err) {
-// 		console.log(err, "Failed to clear slaves collection.");
-// 	} else {
-// 		console.log(reset, "Slaves collection cleared.");
-// 	}
-// });
-
 // Generates a new slave with randomized data.
 const namesList = ["Julianus Dama", "Vel Angelus", "Tertius Valens", "Lucius Ecdicius", "Caelus Constans", "Marcellus Balbus", "Opiter Postumus"];
 const generateSlave = () => {
   for (let i = 0; i < 4; i++) {
-    Slave.create({ name: namesList[Math.floor(Math.random()*namesList.length)], hp: Math.floor(Math.random() * (36 - 12) + 12), atk: Math.floor(Math.random() * (27 - 1) + 1) });
+    Slave.create({ name: namesList[Math.floor(Math.random()*namesList.length)], pwr: Math.random() });
   };
 };
 
@@ -32,7 +23,7 @@ const clearDb = Slave.remove({}, (err, reset) => {
 	if (err) {
 		console.log(err);
 	} else {
-		console.log(reset);
+		console.log(`Slave database cleared.`);
 	}
 });
 
@@ -55,28 +46,32 @@ router.get("/", async (req, res) => {
 // New Route
 router.get("/new", async (req, res) => {
 	try {
-		await generateSlave();
-		const allSlaves = await Slave.find({})
-		console.log(`allSlaves: ${allSlaves}`);
 		await clearDb;
+		await generateSlave();
+		const currentUser = await User.findById(req.session.userId);
+		const allSlaves = await Slave.find({});
+		console.log(`allSlaves: ${allSlaves}`);
 		res.render("slave/new.ejs", {
-			"slaves": allSlaves
+			"slaves": allSlaves,
+			"user": currentUser
 		});
 	} catch (err) {
 		res.send(err);
 	}
 });
 
-router.post("/", async (req, res) => {
+
+// Purchase Route
+router.post("/:id/purchase", async (req, res) => {
 	try {
 		const foundUser = await User.findById(req.session.userId);
 		console.log(`foundUser: ${foundUser}`);
-		const purchasedSlaves = await Slave.findById([req.body.name]);
-		console.log(`purchasedSlaves: ${purchasedSlaves}`);
-		// const purchasedSlaves = (req.body);
-		// foundUser.slaves.push(newSlave);
-		// const data = await foundUser.save();
-		res.redirect("/slaves");
+		const foundSlave = await Slave.findById(req.params.id);
+		console.log(`foundSlave: ${foundSlave}`);
+		foundUser.slaves.push(foundSlave);
+		console.log(`foundUser: ${foundUser}`);
+		const savedUser = await foundUser.save();
+		console.log(`savedUser: ${savedUser}`);
 	} catch (err) {
 		res.send(err)
 	}
@@ -86,12 +81,10 @@ router.post("/", async (req, res) => {
 // Show Route
 router.get("/:id", async (req, res) => {
 	try {
-		const shownSlave = await Slave.findById(req.params.id);
-		const foundUser = await User.findOne({"slaves._id":req.params.id});
-		res.render("slave/show.ejs", {
-			"slave": shownSlave,
-			"user": req.session.userId,
-			"displayName": req.session.displayName
+		const shownSlave = User.slaves.findById(req.params.id);
+		console.log(`userSlaves: ${userSlaves}`);
+		res.render("slaves/show.ejs", {
+			"shownSlave": shownSlave
 		})
 	} catch (err) {
 		res.send(err)
