@@ -41,16 +41,29 @@ router.post("/", async (req, res) => {
 });
 
 
+// // Tournament Entry Route
+// router.post("/:id/enterTournament", async (req, res) => {
+// 	try {
+// 		const selectedSlave = await Slave.findById(req.body.id);
+// 		console.log(`selectedSlave: ${selectedSlave}`);
+// 		// const selectedTournament = await Tourney.findById(req.params.id);
+// 		// console.log(`selectedTournament: ${selectedTournament}`);
+// 		// selectedTournament.fighters.push(selectedSlave);
+// 		// const savedTournament = await selectedTournament.save();
+// 		// console.log(`savedTournament: ${savedTournament}`);
+// 	} catch (err) {
+// 		res.send(err)
+// 	}
+// });
+
+
 // Show Route
 router.get("/:id", async (req, res) => {
 	try {
+		const foundUser = await User.findById(req.session.userId);
 		const shownTourney = await Tourney.findById(req.params.id);
-		const shownSlave = await Slave.findById(req.params.id);
-		const foundUser = await User.findOne({"slaves._id":req.params.id});
 		res.render("tourney/show.ejs", {
-			"slave": shownSlave,
-			"user": req.session,
-			"displayName": req.session.displayName,
+			"user": foundUser,
 			"tourney": shownTourney
 		})
 	} catch (err) {

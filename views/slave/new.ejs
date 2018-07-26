@@ -22,7 +22,7 @@
 	<main>
 		<h3>Slaves Available for Purchase</h3>
 		<ul>
-			<% for (let i = 0; i < slaves.length; i++) { %>
+			<% for (let i = 0; i < 4; i++) { %>
 				<h2><%=slaves[i].name%></h2>
 					<form action="/slaves/<%=slaves[i].id%>/purchase" method="POST">
 						<button>Purchase</button>
