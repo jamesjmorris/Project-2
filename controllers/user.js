@@ -39,15 +39,15 @@ router.post("/", async (req, res) => {
 
 // Show Route
 router.get("/:id", async (req, res) => {
-	try {
-		console.log("Show Route");
-		const currentUser = await User.findById(req.params.id);
-		res.render("user/show.ejs", {
-			"user": currentUser
-		})
-	} catch (err) {
-		res.send(err)
-	}
+    try {
+        console.log("Show Route");
+        const currentUser = await User.findById(req.params.id);
+        res.render("user/show.ejs", {
+            "user": currentUser
+        })
+    } catch (err) {
+        res.send(err)
+    }
 });
 
 

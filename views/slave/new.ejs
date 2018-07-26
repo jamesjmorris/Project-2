@@ -5,52 +5,50 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Home Page</title>
-	<link rel="stylesheet" type="text/css" href="/css/slaveindex.css">
+	<title>Market</title>
+	<link rel="stylesheet" type="text/css" href="/css/slavenew.css">
 </head>
 <body>
 
-	<h1 class='title'>Slave Barracks</h1>
+	<h1 class='title'>Slave Market</h1>
 
 
 	<ul class='navbar'>
   		<li><a href="/">Front Page</a></li>
+  		<li><a href="/slaves">Active Gladiators</a></li>
   		<li><a href="/tourney">Colosseum</a></li>
   		<li><a href="/user">Account Setting</a></li>
-  		<li><a href="/slave/new">Purchase Slave</a></li>
   		<li><a class='logout' href="auth/logout">Logout</a></li>
 	</ul>
 
 
-<div class='mainbody'>
-	<h4>Gladiators List</h4>
 
-	<%for(i = 0; i < slave.length; i) {++%>
-	<ul>
-		<li><a href="slave/:id"></a>slave[i].name</li>
-	</ul>
-	<% } %>
-</div>
+	<h2 class="listtitle">Gladiators List</h2>
+
+	<% for(i = 0; i < slaves.length; i++) {%>
+ 
+		<div class="gladiator">
+			<h4><%=slaves[i].name%></h4>
+
+			<form action="<%=slaves[i].id%>/purchase" method="POST">
+				<button type='submit'>Purchase</button>
+			</form>
+
+		</div>
+
+    <% } %>
+
+
+
+
+
+
+
+
 	
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Market</title>
-</head>
-<body>
 
-	<header>
-		<h1>Slave Market</h1>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/slaves">Active Gladiators</a></li>
-			</ul>
-		</nav>
-	</header>
+	
 
 	<main>
 		<form action="/slaves" method="POST">

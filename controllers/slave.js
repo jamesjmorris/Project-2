@@ -9,43 +9,66 @@ const Slave = require("../models/slave");
 const Tourney = require("../models/tourney");
 
 
+// Generates a new slave with randomized data.
+const namesList = ["Julianus Dama", "Vel Angelus", "Tertius Valens", "Lucius Ecdicius", "Caelus Constans", "Marcellus Balbus", "Opiter Postumus"];
+const generateSlave = () => {
+  for (let i = 0; i < 4; i++) {
+    Slave.create({ name: namesList[Math.floor(Math.random()*namesList.length)], pwr: Math.random()});
+  };
+};
 
+// Clear the database
+const clearDb = Slave.remove({}, (err, reset) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(reset);
+    }
+});
 // Index Route
 router.get("/", async (req, res) => {
-	try {
-		const allSlaves = await Slave.find({})
-		res.render("slave/index.ejs", {
-			"slaves": allSlaves
-		})
-	} catch (err) {
-		res.send(err)
-	}
+    try {
+        const reset = await Slave.remove({})
+        const allSlaves = await Slave.find({})
+        const currentUser = await User.findById(req.params.id);
+        console.log(`allSlaves: ${allSlaves}`);
+        res.render("slave/index.ejs", {
+            // "slaves": allSlaves,
+            "user": currentUser
+        })
+    } catch (err) {
+        res.send(err)
+    }
 });
 
 
 // New Route
 router.get("/new", async (req, res) => {
-	try {
-		res.render("slave/new.ejs");
-	} catch (err) {
+    try {
+        await generateSlave();
+        const allSlaves = await Slave.find({})
+        console.log(`allSlaves: ${allSlaves}`);
+        res.render("slave/new.ejs", {
+            "slaves": allSlaves
+        });
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+//Add Slaves to user index
+router.post('/:id/purchase', async (req, res) => {
+	try{
+	const foundUser = await User.findById(req.session.userId);
+	const foundSlave = await Slave.findById(req.params.id);
+	foundUser.slaves.push(foundSlave)
+	console.log(`found user: ${foundUser}`)
+	const savedUser = await foundUser.save();
+	} catch(err) {
 		res.send(err);
 	}
 });
 
-router.post("/", async (req, res) => {
-	try {
-		const foundUser = await User.findById(req.session.userId);
-		console.log(`foundUser: ${foundUser}`);
-		const newSlave = await Slave.create({name: req.body.name});
-		console.log(`newSlave: ${newSlave}`);
-		foundUser.slaves.push(newSlave);
-		const data = await foundUser.save();
-		console.log(`foundUser: ${foundUser}`);
-		res.redirect("/slaves");
-	} catch (err) {
-		res.send(err)
-	}
-});
 
 // Like options
 router.post('/:id/like', async (req,res) => {
@@ -60,27 +83,20 @@ router.post('/:id/like', async (req,res) => {
 })
 
 
-
-
 // Show Route
 router.get("/:id", async (req, res) => {
 	try {
 		const shownSlave = await Slave.findById(req.params.id);
-		console.log("Slave Found")
-		const foundUser = await User.findOne({"slaves._id":req.params.id});
+		console.log("found slave")
+		const foundSlave = await User.findOne({"slaves._id":req.params.id});
 		res.render("slave/show.ejs", {
-			"slave": shownSlave,
+			"slave": foundSlave,
 			"user": req.session.userId,
 			"displayName": req.session.displayName
 		})
 	} catch (err) {
 		res.send(err)
 	}
-});
-
-// Create Route
-router.get('/new', (req, res) => {
-  res.render('slave/new.ejs');
 });
 
 

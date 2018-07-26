@@ -10,8 +10,7 @@ const mongoose = require("mongoose");
 const slaveSchema = mongoose.Schema({
 	name: String,
 	image: String,
-	hp: Number,
-	atk: Number
+	pwr: Number
 });
 
 module.exports = mongoose.model("Slave", slaveSchema);

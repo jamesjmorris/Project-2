@@ -4,11 +4,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>New Tourney</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>New Tourney</title>
 </head>
 <body>
 
+    <header>
+        <h1>New Tournament</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/tourneys">Active Tournaments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+    <main>
+        <form action="/tourney" method="POST">
+            <input type="text" name="name">
+            <input type="number" name="capacity" min="2" max="8" step="1">
+            <button type="submit">Sponsor Tournament</button>
+        </form>
+    </main>
+
+
+
+
+
+
 </body>
+</html>
 </html>

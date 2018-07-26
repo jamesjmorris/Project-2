@@ -16,21 +16,29 @@
 	<ul class='navbar'>
   		<li><a href="/">Front Page</a></li>
   		<li><a href="/tourney">Colosseum</a></li>
-  		<li><a href="/user">Account Setting</a></li>
-  		<li><a href="/slave/new">Slave Market</a></li>
+  		<li><a href="/users">Account Setting</a></li>
+  		<li><a href="/slaves/new">Slave Market</a></li>
   		<li><a class='logout' href="auth/logout">Logout</a></li>
 	</ul>
 
 
 <div class='mainbody'>
-	<h4>Actice Gladiators</h4>
+	<h4>Active Gladiators</h4>
 
 	<main>
-		<ul>
-			<% for (let i = 0; i < slaves.length; i++) { %>
-			<li><a href="/slaves/<%=slaves[i].id%>"><%=slaves[i].name%></a></li>
-			<% } %>
-		</ul>
+
+
+
+		        <ul>
+        	<% for (let i = 0; i < user.slaves.length; i++) { %>
+                
+                <li><a href="/slaves/<%=user.slaves[i].id%>"><%=user.slaves[i].name%></a></li>
+            <% } %>
+        </ul>
+
+
+
+
 	</main>
 
 </div>

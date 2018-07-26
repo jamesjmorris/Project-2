@@ -14,12 +14,17 @@ header {
     font-family: Luminari, fantasy;
     font-size: 50px;
 }
+.listtitle {
+    font-family: Luminari, fantasy;
+    color: #A75B10;
+}
 body {
     /*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
     background-image: url('https://news.nationalgeographic.com/content/dam/news/photos/000/769/76935.ngsversion.1422286124174.adapt.1900.1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    text-align: center;
+    background-attachment: fixed;
+    text-align:center;
 }
 .mainbody {
     /*background-color: #F8ECC2;*/
@@ -29,8 +34,16 @@ body {
     width: 1350px;
     border-radius: 10px;
 }
+.gladiator {
+    background-color: #F8ECC2;
+    height: 350px;
+    width: 200px;
+    border-radius: 7px;
+    float: left;
+    margin: 10px 100px;
+}
 .logout {
-    margin: 0px 0px 0px 802px;
+    margin: 0px 0px 0px 786px;
 }
 
 

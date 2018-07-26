@@ -1,13 +1,3 @@
-header {
-    background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Gladiators-of-Rome.jpg');
-    background-repeat: no-repeat;
-    background-size: 1350px 200px;
-    background-position: left bottom;
-    height: 200px;
-    width: 1350px;
-    margin: auto;
-    border-radius: 10px;
-}
 .title {
     margin: 60px auto 60px auto;
     /*color: #905923;*/
@@ -19,6 +9,7 @@ body {
     background-image: url('https://images3.alphacoders.com/166/thumb-1920-166799.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     text-align: center;
 }
 .mainbody {
@@ -40,8 +31,10 @@ body {
     border-radius: 10px;
 }
 
+
+
 /*navbar CSS*/
-ul {
+.navbar{
     width: 1350px;
     margin: auto;
     list-style-type: none;
@@ -49,13 +42,26 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    margin: 10px auto;
+    border-radius: 10px;
 }
 
-li {
+/*navbar CSS*/
+/*ul {
+    width: 1350px;
+    margin: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}*/
+
+.navbarli {
     float: left;
 }
 
-li a {
+.navbarlia {
     display: block;
     color: white;
     text-align: center;
@@ -67,11 +73,10 @@ li a {
 li a:hover {
     background-color: #111;
 }
-
-#newslave {
-    margin: 0px 0px 0px 900px;
+.logout {
+    float: left;
+    margin: 0px 0px 0px 720px;
 }
-
 
 
 
@@ -96,17 +101,13 @@ main{
   list-style:none;
   padding:0;
 }
-  .round .spacer{ flex-grow:1; }
-  .round .spacer:first-child,
-  .round .spacer:last-child{ flex-grow:.5; }
-
-  .round .game-spacer{
+.round .spacer{ flex-grow:1; }
+.round .spacer:first-child,
+.round .spacer:last-child{ flex-grow:.5; }
+.round .game-spacer{
     flex-grow:1;
-  }
-
-/*
- *  General Styles
-*/
+}
+/*General Style*/
 body{
   font-family:sans-serif;
   font-size:small;
