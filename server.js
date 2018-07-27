@@ -98,6 +98,13 @@ app.get("/", async (req, res) => {
 
 
 // Listening for server
-app.listen(3030, () => {
-	console.log("server.js is listening on port 3030.");
-});
+// app.listen(3030, () => {
+// 	console.log("server.js is listening on port 3030.");
+// });
+
+port = process.env.PORT || 3000;
+
+app.listen(port);
+console.log('---------------------------------');
+console.log('Server running on port: ' + port);
+console.log('---------------------------------');
