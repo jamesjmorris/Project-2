@@ -1,45 +1,37 @@
 <%console.log("views/slave/index.ejs is running...");%>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Home Page</title>
 	<link rel="stylesheet" type="text/css" href="css/slaveindex.css">
+	<title>Gladiator Index</title>
 </head>
 <body>
 
-	<h1 class='title'>Slave Barracks</h1>
-
-
-	<ul class='navbar'>
-  		<li><a href="/">Front Page</a></li>
-  		<li><a href="/tourney">Colosseum</a></li>
-  		<li><a href="/users">Account Setting</a></li>
-  		<li><a href="/slaves/new">Slave Market</a></li>
-  		<li><a class='logout' href="auth/logout">Logout</a></li>
-	</ul>
-
-
-<div class='mainbody'>
-	<h4>Active Gladiators</h4>
+	<header>
+		<h1 class='title'>Active Gladiators</h1>
+		<nav>
+			<ul class='navbar'>
+		  		<li><a href="/">Front Page</a></li>
+		  		<li><a href="/tourneys">Colosseum</a></li>
+		  		<li><a href="/users/<%=user.id%>"><%=user.displayName%></a></li>
+		  		<li><a href="/slaves/new">Gladiator Market</a></li>
+		  		<li><a class='logout' href="auth/logout">Logout</a></li>
+			</ul>
+		</nav>
+	</header>
 
 	<main>
-
-
-
-		        <ul>
-        	<% for (let i = 0; i < user.slaves.length; i++) { %>
-                
-                <li><a href="/slaves/<%=user.slaves[i].id%>"><%=user.slaves[i].name%></a></li>
-            <% } %>
-        </ul>
-
-
-
-
+		<ul>
+		<% for (let i = 0; i < slaves.length; i++) { %>
+			<li><a href="/slaves/<%=slaves[i].id%>"><%=slaves[i].name%></a></li>
+		<% } %>
+		</ul>
 	</main>
 
-</div>
-	
+</body>
+</html>

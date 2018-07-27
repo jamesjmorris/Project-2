@@ -5,12 +5,29 @@ console.log("controllers/auth.js is running...");
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const Tourney = require("../models/tourney");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 
 
+// Clear Tournament Database
+const clearTourneys = Tourney.remove({}, (err, reset) => {
+	if (err) {
+		console.log(err)
+	} else {
+		console.log("Tournament database cleared.");
+	}
+})
+
+
+// Available Tournaments
+const bronzeCup = Tourney.create({name: "Bronze Cup", capacity: 2, fighters: ["Spot Open", "Spot Open"], roundWinners: ["TBA"]});
+const silverCup = Tourney.create({name: "Silver Cup", capacity: 4, fighters: ["Spot Open", "Spot Open"], roundWinners: ["TBA"]});
+const goldCup = Tourney.create({name: "Gold Cup", capacity: 8, fighters: ["Spot Open", "Spot Open"], roundWinners: ["TBA"]});
+
+
 // Register new user
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
 	let message = "";
 	if (req.session.message) {
 		message = req.session.message
@@ -59,19 +76,14 @@ router.post("/login", async (req, res) => {
 });
 
 
-
 router.get("/logout", async (req, res) => {
-	try {
 	req.session.destroy((err) => {
 		if (err) {
-			res.send("Error destroying session")
+			res.send("Error destroying sesion")
 		} else {
-			res.redirect("/auth")
+			res.redirect("/")
 		}
 	})
-} catch {
-	res.send(err)
-}
 });
 
 module.exports = router;

@@ -1,6 +1,17 @@
+header {
+	background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Gladiators-of-Rome.jpg');
+	background-repeat: no-repeat;
+    background-size: 1350px 200px;
+    background-position: left bottom;
+    height: 200px;
+	width: 1350px;
+	margin: auto;
+	border-radius: 10px;
+}
 .title {
-    color: rgba(248,236,194, 0.9);
+    color: rgba(248,236,194, 1);
     margin: 60px auto 60px auto;
+    /*color: #A75B10;*/
     /*color: #905923;*/
     font-family: Luminari, fantasy;
     font-size: 50px;
@@ -8,55 +19,30 @@
 }
 body {
 	/*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
-    background-image: url('https://i.dailymail.co.uk/i/pix/2016/02/29/02/31AB01CC00000578-0-image-a-13_1456714652027.jpg');
+    background-image: url("http://cdn.shopify.com/s/files/1/1551/9675/articles/Ancient-Roman-Statues-Diadumenos_1024x1024.jpg?v=1516197323");
 	background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     /*text-align: center;*/
 }
 .mainbody {
 	/*background-color: #F8ECC2;*/
-    background-color: rgba(248,236,194, 1);
+    background-color: rgba(248,236,194, 0.9);
 	margin: auto;
     height:1000px;
     width: 1350px;
     border-radius: 10px;
 }
-section{
-    margin: 0px 35px;
+.welcome {
     font-family: Luminari, fantasy;
+    padding:10px;
+    text-align: center;
 }
-.slavelist{
-    width : 500px;
-    /*background-color: red;*/
-    float: left;
-    margin: 10px 0px 0px 0px;
+.logout {
+    margin: 0px 0px 0px 938px;
 }
-.gladli{
-    margin: 10px 0px;
-}
-.editbutton{
-    float: right;
-    height: 80px;
-    width: 250px;
-    background-color: white;
-    border:  2px solid black;
-    border-radius: 3px;
-    float: right;
-    margin: 20px 20px 0px 0px;
-}
-.editpic{
-    height: 80px;
-    width: 80px;
-}
-.editlabel{
-    font-size: 50px;
-    font-family: Luminari, fantasy;
-    float: right;
-    margin: 12px 40px 0px 0px;
-}
-.edit{
-    /*float: right;*/
-}
+
+
 
 /*navbar CSS*/
 .navbar{
@@ -100,5 +86,5 @@ li a:hover {
 }
 #logout {
     float: right;
-    /*margin: 0px 0px 0px 600px;*/
+    /*margin: 0px 0px 0px 898px;*/
 }

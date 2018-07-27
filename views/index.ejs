@@ -6,47 +6,40 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Home Page</title>
 	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+	<title>Home Page</title>
 </head>
 <body>
 
-
-	<h1 class='title'>Gladiator Gambler</h1>
-
-<div>
-	<ul class='navbar'>
-  		<li class='navbarli'><a class='navbarlia' href="/slaves">Active Gladiators</a></li>
-  		<li class='navbarli'><a class='navbarlia' href="/slaves/new">Purchase Gladiators</a></li>
-  		<li class='navbarli'><a class='navbarlia' href="/tourney">Colosseum</a></li>
-  		<li class='navbarli'><a class='navbarlia' href="/users">Account Settings</a></li>
-
-<li class='navbarli'><a class='navbarlia' href="/tourney/new">new tourney</a></li>
-
-  		<li id='logout'><a class='navbarlia' href="auth/logout">Logout</a></li>
-	</ul>
-	</div>
-
-
+	<h1 class='title'>Welcome to Gladiator Gambler</h1>
+	<nav>
+		<div>
+			<ul class='navbar'>
+		  		<li class='navbarli'><a class='navbarlia' href="/slaves/new">Gladiator Market</a></li>
+		  		<li class='navbarli'><a class='navbarlia' href="/tourneys">Colosseum</a></li>
+		  		<li class='navbarli'><a class='navbarlia' href="/users/<%=userId%>"><%=displayName%></a></li>
+		  		<li id='logout'><a class='navbarlia' href="auth/logout">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
 
 <div class='mainbody'>
+
 		<h2 class='welcome'>Welcome, <%=displayName%></h2>
 
+		<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gladiators_from_the_Zliten_mosaic_3.JPG">
+
 		<ul>
-			<h4>Updates</h4>
+			<h2>Current Updates:</h2>
 		</ul>
 		
 		<ul>
-			<li>Created "basic" website.</li>
-			<li>Something something something</li>
-			<li></li>
+			<li>A gladiator market has opened up in town.</li>
+			<li>The Colosseum is currently hosting the "Bronze Cup" Tournament</li>
+			<li>Something something something....</li>
 		</ul>
 		
-</div>
-	<div>
-		Some dope tournaments<p/>
-	</div>
-</div>
+
 
 </body>
 </html> 

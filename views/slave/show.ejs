@@ -5,32 +5,31 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="/css/slave-show.css">
 	<title>Gladiator Details</title>
 </head>
 <body>
+	<h1 class='title'><%=slave.name%></h1>
 
-	<header>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/users">Active Users</a></li>
-				<li><a href="/slaves">Active Gladiators</a></li>
+	<nav>
+		<div>
+			<ul class='navbar'>
+		  		<li class='navbarli'><a class='navbarlia' href="/">Home</a></li>
+		  		<li id='logout'><a class='navbarlia' href="auth/logout">Logout</a></li>
 			</ul>
-		</nav>
-	</header>
+		</div>
+	</nav>
 
-	<main>
-		<section>
-			<h2><a href="/users/<%=user%>"><%=displayName%>'s</a> Gladiators</h2>
-			<ul>
-				<li><%=slave.name%></li>
-				<a href="/slaves/<%=slave.id%>/edit">Change Name</a>
-				<form action="/slaves/<%=slave.id%>?_method=DELETE" method="POST">
-					<button type="submit">Retire Gladiator</button>
-				</form>
-			</ul>
-		</section>
-	</main>
+	<div class="mainbody">
+		<main>
+			<section>
+				<ul>
+					<a href="/slaves/<%=slave.id%>/edit">Change Name</a>
+				</ul>
+			</section>
+		</main>
+	</div>
+
 
 </body>
 </html>

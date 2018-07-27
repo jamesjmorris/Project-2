@@ -5,15 +5,23 @@
     font-size: 50px;
     text-align: center;
 }
+h4{
+    margin: 55px 0px 0px 0px;
+}
+.register-title{
+    margin: 0px 0px 0px 0px;
+}
 body {
     /*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
     background-image: url('https://theplanetd.com/images/jerash-jordan-5-1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     /*text-align: center;*/
 }
 .login {
-    height: 275px;
+    /*height: 275px;*/
+    height: 419px;
     width: 375px;
     /*background-color: #F8ECC2;*/
     background-color: rgba(248,236,194, 0.9);
@@ -36,6 +44,11 @@ body {
 }
 .logout {
     margin: 0px 0px 0px 898px;
+}
+.login-err{
+    text-align:center;
+    font-family: Luminari, fantasy;
+    color: maroon;
 }
 #register {
     margin: 10px auto;

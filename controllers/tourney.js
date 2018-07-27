@@ -1,5 +1,7 @@
 console.log("controllers/tourney.js is running...");
 
+
+// Requires npm modules
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
@@ -7,56 +9,110 @@ const Slave = require("../models/slave");
 const Tourney  = require("../models/tourney");
 
 
+// Index Route
 router.get("/", async (req, res) => {
-	const allSlaves = await Slave.find({})
-	const allTourneys = await Tourney.find({})
-	res.render("tourney/index.ejs", {
-		"slaves": allSlaves,
-		"tourneys": allTourneys
-	})
-});
-
-
-// New Route
-router.get("/new", async (req, res) => {
-	const allSlaves = await Slave.find({})
-	const allTourneys = await Tourney.find({})
-	res.render("tourney/new.ejs", {
-		"slaves": allSlaves,
-		"tourneys": allTourneys
-	})
-});
-
-
-
-
-// Show Route
-router.get('/:id', (req, res) => {
-  Tourney.findById(req.params.id, (err, foundTourney) => {
-    res.render('tourney/show.ejs', {
-      tourney: foundTourney
-    });
-  });
-});
-
-
-
-
-router.post("/", async (req, res) => {
 	try {
-		const foundUser = await User.findById(req.session.userId);
-		console.log(`foundUser: ${foundUser}`);
-		const newTourney = await Tourney.create({name: req.body.name, capacity: req.body.capacity});
-		console.log(`newTourney: ${newTourney}`);
-		res.redirect("/tourney");
+		const currentUser = await User.findById(req.session.userId);
+		const allTourneys = await Tourney.find({})
+		res.render("tourney/index.ejs", {
+			"tourneys": allTourneys,
+			"user": currentUser
+		})
 	} catch (err) {
 		res.send(err)
 	}
 });
 
 
+// New Route
+router.get("/new", async (req, res) => {
+	try {
+		res.render("tourney/new.ejs");
+	} catch (err) {
+		res.send(err)
+	}
+});
+
+router.post("/", async (req, res) => {
+	try {
+		const newTourney = await Tourney.create(req.body);
+		res.redirect("/tourneys");
+	} catch (err) {
+		res.send(err)
+	}
+});
 
 
+// Tournament Begin
+router.post("/:id/beginTournament", async (req, res) => {
+	try {
+		const selectedSlave = await Slave.findById(req.params.id);
+		console.log(`selectedSlave: ${selectedSlave}`);
+		const selectedTournament = await Tourney.findOne({name: "Bronze Cup"});
+		console.log(`selectedTournament: ${selectedTournament}`);
+		console.log(`${selectedTournament} has begun!`);
+		if (selectedTournament.fighters[0].pwr > selectedTournament.fighters[1].pwr) {
+			console.log(`${selectedTournament.fighters[0].name} has won the round!`);
+			let winner = await selectedTournament.roundWinners.unshift(selectedTournament.fighters[0]);
+			let savedTournament = await selectedTournament.save();
+		} else {
+			console.log(`${selectedTournament.fighters[1].name} has won the round!`);
+			let winner = await selectedTournament.roundWinners.unshift(selectedTournament.fighters[1]);
+			let savedTournament = await selectedTournament.save();
+		}
+	} catch (err) {
+		res.send(err)
+	}
+});
+
+
+// Show Route
+router.get("/:id", async (req, res) => {
+	try {
+		const foundUser = await User.findById(req.session.userId);
+		const shownTourney = await Tourney.findById(req.params.id);
+		const bronzeCup = await Tourney.findOne({name: "Bronze Cup"});
+		const silverCup = await Tourney.findOne({name: "Silver Cup"});
+		const goldCup = await Tourney.findOne({name: "Gold Cup"});
+		res.render("tourney/show.ejs", {
+			"user": foundUser,
+			"tourney": shownTourney,
+			"bronze": bronzeCup,
+			"silver": silverCup,
+			"gold": goldCup
+		})
+	} catch (err) {
+		res.send(err)
+	}
+});
+
+
+// Delete Route
+router.delete("/:id", async (req, res) => {
+	try {
+		const deletedTourney = await Tourney.findByIdAndRemove(req.params.id);
+		res.redirect("/tourneys");
+	} catch (err) {
+		res.send(err)
+	}
+});
+
+
+// Edit Route
+router.get("/:id/edit", async (req, res) => {
+	const foundTourney = await Tourney.findById(req.params.id);
+	res.render("tourney/edit.ejs", {
+		"tourney": foundTourney 
+	})
+});
+
+router.put("/:id", async (req, res) => {
+	try {
+		const updatedTourey = await Tourney.findByIdAndUpdate(req.params.id, req.body, {new: true});
+		res.redirect("/tourneys");
+	} catch (err) {
+		res.send(err);
+	}
+});
 
 module.exports = router;
-

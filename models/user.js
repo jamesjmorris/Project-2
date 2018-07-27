@@ -4,6 +4,7 @@ console.log("models/user.js is running...");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const Slave = require("./slave");
+const Schema = mongoose.Schema;
 
 
 // User Schema for new users

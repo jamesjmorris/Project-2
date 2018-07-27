@@ -4,13 +4,16 @@ console.log("models/slave.js is running...");
 
 // Required npm modules
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 
 // Slaves schema for use in tournament battles.
 const slaveSchema = mongoose.Schema({
 	name: String,
-	image: String,
+	img: String,
 	pwr: Number
 });
 
-module.exports = mongoose.model("Slave", slaveSchema);
+
+const Slave = mongoose.model("Slave", slaveSchema);
+module.exports = Slave;

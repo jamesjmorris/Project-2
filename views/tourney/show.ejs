@@ -1,4 +1,4 @@
-<%console.log("tourney/show.ejs is running...");%>
+<%console.log("views/tourney/show.ejs is running...");%>
 
 
 <!DOCTYPE html>
@@ -6,22 +6,27 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="/css/tourney-show.css">
     <title>Tourney Details</title>
 </head>
 <body>
+    <h1 class="title"><%=tourney.name%></h1>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/tourneys">Active Tournaments</a></li>
+    <nav>
+        <div>
+            <ul class='navbar'>
+                <li class='navbarli'><a class='navbarlia' href="/">Home</a></li>
+                <li id='logout'><a class='navbarlia' href="auth/logout">Logout</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
+
+    <div class="mainbody">
+        
+
 
     <main>
         <section>
-            <h2><%=tourney.name%></h2>
             <ul>
                 <li>Capacity: <%=tourney.capacity%></li>
                 <h3>Current Roster:</h3>
@@ -30,12 +35,28 @@
                 <% } %>
             </ul>
         </section>
-        <form action="/tourneys/<%=tourney.id%>?_method=DELETE" method="POST">
-            <button type="submit">End Tournament</button>
-        </form>
+
+        <section>
+            <ul>
+                <h3>Choose a fighter!</h3>
+                <% for (let i = 0; i < user.slaves.length; i++) { %>
+                <li><%=user.slaves[i].name%></li>
+                <form action="/slaves/<%=user.slaves[i].id%>/enterTournament" method="POST">
+                    <button>Select Gladiator</button>
+                </form>
+                <% } %>
+            </ul>
+        </section>
+                <form action="/tourneys/<%=tourney.id%>/beginTournament" method="POST">
+                    <button type="submit">Begin Tournament</button>
+                </form>
     </main>
 
 
+    </div>
+
+
+      
 
 </body>
 </html>

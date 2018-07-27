@@ -1,8 +1,10 @@
 .title {
+    color: rgba(248,236,194, 0.9);
     margin: 60px auto 60px auto;
     /*color: #905923;*/
     font-family: Luminari, fantasy;
     font-size: 50px;
+    text-align: center;
 }
 body {
     /*background-image: url('https://thumbs.dreamstime.com/z/old-roman-tunnel-to-gladiator-arena-constructed-rectangular-blocks-33484462.jpg');*/
@@ -14,22 +16,18 @@ body {
 }
 .mainbody {
     /*background-color: #F8ECC2;*/
-    background-color: rgba(248,236,194, 0.9);
+    background-color: rgba(248,236,194, 1);
     margin: auto;
-    height:1000px;
+    height:1250px;
     width: 1350px;
     border-radius: 10px;
 }
-.logout {
-    margin: 0px 0px 0px 898px;
+.listtitle {
+    font-family: Luminari, fantasy;
+    color: #A75B10;
 }
 
 
-
-.navbar{
-    margin: 10px auto;
-    border-radius: 10px;
-}
 
 
 
@@ -73,9 +71,9 @@ body {
 li a:hover {
     background-color: #111;
 }
-.logout {
-    float: left;
-    margin: 0px 0px 0px 720px;
+#logout {
+    float: right;
+    /*margin: 0px 0px 0px 600px;*/
 }
 
 
@@ -85,9 +83,39 @@ li a:hover {
 
 
 
+
 /*Tournament Bracket*/
-#tournament {
+/*#tournament {
     background-color: white;
+    height: 200px;
+    width: 500px;
+    margin: 0px auto;
+    border: 2px solid maroon;
+    border-radius: 10px;
+}*/
+#bronze-cup {
+    background-color: white;
+    height: 200px;
+    width: 500px;
+    margin: 0px auto;
+    border: 2px solid maroon;
+    border-radius: 10px;
+}
+#silver-cup {
+    background-color: white;
+    height: 320px;
+    width: 670px;
+    margin: 0px auto;
+    border: 2px solid maroon;
+    border-radius: 10px;
+}
+#gold-cup {
+    background-color: white;
+    height: 400px;
+    width: 800px;
+    margin: 0px auto;
+    border: 2px solid maroon;
+    border-radius: 10px;
 }
 main{
   display:flex;
@@ -108,32 +136,29 @@ main{
     flex-grow:1;
 }
 /*General Style*/
-body{
+/*body{
   font-family:sans-serif;
   font-size:small;
   padding:10px;
   line-height:1.4em;
-}
-
+}*/
 li.game{
   padding-left:20px;
 }
-
   li.game.winner{
-    font-weight:bold;
+    /*font-weight:bold;*/
   }
   li.game span{
     float:right;
     margin-right:5px;
   }
-
-  li.game-top{ border-bottom:1px solid #aaa; }
-
+  li.game-top{
+    border-bottom:1px solid #aaa; 
+  }
   li.game-spacer{ 
     border-right:1px solid #aaa;
     min-height:40px;
   }
-
   li.game-bottom{ 
     border-top:1px solid #aaa;
   }

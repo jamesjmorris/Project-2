@@ -5,41 +5,52 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>User Detials</title>
     <link rel="stylesheet" type="text/css" href="/css/usershow.css">
+    <title>User Detials</title>
 </head>
 <body>
-    <header>
-        <h1><%=user.displayName%></h1>
-
-
-
-	<ul class='navbar'>
-  		<li class="navbarli"><a class="navbarlia" href="/">Front Page</a></li>
-  		<li class="navbarli"><a class="navbarlia" href="/slave">Slave Barracks</a></li>
-  		<li class="navbarli"><a class="navbarlia" href="/tourney">Colosseum</a></li>
-  		<li class="navbarli"><a class='logout' href="auth/logout">Logout</a></li>
-	</ul>
-
-
-
-        <a href="/users/<%=user.id%>/edit">Edit Profile</a>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/users">Active Users</a></li>
-                <li><a href="/slaves/new">Slave Market</a></li>
+    <h1 class="title"><%=user.displayName%>'s Account</h1>
+    <nav>
+        <div>
+            <ul class='navbar'>
+                <li class='navbarli'><a class='navbarlia' href="/">Home</a></li>
+                <li class='navbarli'><a class='navbarlia' href="/slaves/new">Gladiator Market</a></li>
+                <li class='navbarli'><a class='navbarlia' href="/tourneys">Colosseum</a></li>
+                <li id='logout'><a class='navbarlia' href="auth/logout">Logout</a></li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <section>Owned Slaves</section>
-        <ul>
-        	<% for (let i = 0; i < user.slaves.length; i++) { %>
-                
-                <li><a href="/slaves/<%=user.slaves[i].id%>"><%=user.slaves[i].name%></a></li>
-            <% } %>
-        </ul>
-    </main>
+        </div>
+    </nav>
+
+
+    <div class='mainbody'>
+
+        <main class="slavelist">
+            <section><h2>Owned Gladiators</h2></section>
+            <ul>
+                <% for (let i = 0; i < user.slaves.length; i++) { %>
+                    <li class="gladli"><a href="/slaves/<%=user.slaves[i].id%>"><%=user.slaves[i].name%></a></li>
+                <% } %>
+            </ul>
+        </main>
+
+<!--         <div class="editbutton">
+            <a class="edit" href="/users/<%=user.id%>/edit">Edit Profile</a>
+        </div> -->
+
+        <a class="edit" href="/users/<%=user.id%>/edit">
+            <div class="editbutton">
+                <img class="editpic" src="https://cdn2.iconfinder.com/data/icons/theatre-cartoon/512/a1849-512.png">
+                <h1 class="editlabel">Edit</h1>
+            </div>
+        </a>
+
+    </div>
+
+
+
+
+
+
+
 </body>
 </html>

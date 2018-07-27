@@ -5,19 +5,30 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="/css/useredit.css">
 	<title>User Edit</title>
 </head>
 
 <body>
-	<header>
-		<h1>Edit <%=user.displayName%>'s Info</h1>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/users">Users List</a></li>
+	<h1 class='title'><%=user.displayName%>'s info:</h1>
+	<nav>
+		<div>
+			<ul class='navbar'>
+		  		<li class='navbarli'><a class='navbarlia' href="/">Home</a></li>
+		  		<li id='logout'><a class='navbarlia' href="auth/logout">Logout</a></li>
 			</ul>
-		</nav>
-	</header>
+		</div>
+	</nav>
+
+
+
+
+
+	<div class="mainbody">
+
+		<h1 class="welcome">Edit <%=user.displayName%>'s Info</h1>
+
+
 	
 	<main>
 		<h2><%=user.displayName%>'s info:</h2>
@@ -32,7 +43,8 @@
 		</form>
 	</main>
 
+	</div>
+
 </body>
 </html>
-
 

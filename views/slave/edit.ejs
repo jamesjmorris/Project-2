@@ -15,13 +15,12 @@
 		<nav>
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="/slaves">Active Gladiators</a></li>
 			</ul>
 		</nav>
 	</header>
 
 	<main>
-		<h2>Slave Details:</h2>
+		<h2>Gladiator Details:</h2>
 		<form action="/slaves/<%=slave.id%>?_method=PUT" method="POST">
 			<input type="text" name="name" value="<%=slave.name%>">
 			<input type="submit">

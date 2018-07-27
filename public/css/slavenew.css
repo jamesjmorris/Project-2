@@ -10,6 +10,7 @@ header {
 }
 .title {
     margin: 60px auto 60px auto;
+    color: rgba(248,236,194, 1);
     /*color: #905923;*/
     font-family: Luminari, fantasy;
     font-size: 50px;
@@ -38,23 +39,20 @@ body {
     background-color: #F8ECC2;
     height: 350px;
     width: 200px;
+    border: 1px solid black;
     border-radius: 7px;
-    float: left;
-    margin: 10px 100px;
+    /*float: left;*/
+    margin: 10px 50px;
+    display: inline-block;
 }
 .logout {
+    /*float: right;*/
     margin: 0px 0px 0px 786px;
 }
 
 
-
-.navbar{
-    margin: 10px auto;
-    border-radius: 10px;
-}
-
 /*navbar CSS*/
-ul {
+.navbar{
     width: 1350px;
     margin: auto;
     list-style-type: none;
@@ -62,13 +60,26 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    margin: 10px auto;
+    border-radius: 10px;
 }
 
-li {
+/*navbar CSS*/
+/*ul {
+    width: 1350px;
+    margin: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}*/
+
+.navbarli {
     float: left;
 }
 
-li a {
+.navbarlia {
     display: block;
     color: white;
     text-align: center;
@@ -80,7 +91,7 @@ li a {
 li a:hover {
     background-color: #111;
 }
-
-#newslave {
-    margin: 0px 0px 0px 900px;
+#logout {
+    float: right;
+    /*margin: 0px 0px 0px 600px;*/
 }

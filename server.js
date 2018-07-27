@@ -1,4 +1,4 @@
-console.log("server.js is running...");
+console.log("server is running...");
 
 
 // Required npm modules
@@ -7,6 +7,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
+const Slave = require("./models/slave");
 
 
 // Required database
@@ -24,21 +26,22 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
+
 // Required controllers for router
+// Tournaments controller
+const tournamentController = require("./controllers/tourney");
+app.use("/tourneys", tournamentController);
+
 // User controller
-const userController = require("./controllers/user.js");
+const userController = require("./controllers/user");
 app.use("/users", userController);
 
 // Slaves controller
-const slaveController = require("./controllers/slave.js");
+const slaveController = require("./controllers/slave");
 app.use("/slaves", slaveController);
 
-// Tourney controller
-const tourneyController = require("./controllers/tourney.js");
-app.use("/tourney", tourneyController);
-
 // Auth controller
-const authController = require("./controllers/auth.js");
+const authController = require("./controllers/auth");
 app.use("/auth", authController);
 app.use((req, res, next) => {
 	if (req.session.loggedIn === true) {
@@ -49,13 +52,48 @@ app.use((req, res, next) => {
 });
 
 
+// This allows the user to remain logged in after restarting the server.
+const store = new MongoDBStore({
+  uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+  collection: 'mySessions'
+});
+ 
+store.on('connected', function() {
+  store.client; // The underlying MongoClient object from the MongoDB driver
+});
+ 
+// Catch errors
+store.on('error', function(error) {
+  assert.ifError(error);
+  assert.ok(false);
+});
+ 
+app.use(require('express-session')({
+  secret: 'This is a secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 // 1 week
+  },
+  store: store,
+  // Boilerplate options, see:
+  // * https://www.npmjs.com/package/express-session#resave
+  // * https://www.npmjs.com/package/express-session#saveuninitialized
+  resave: true,
+  saveUninitialized: true
+}));
+
+
 // Home Route
-app.get("/", (req, res) => {
-	console.log("Home Route");
-	res.render("index.ejs", {
-		"displayName": req.session.displayName,
-		"userId": req.session._id
-	})
+app.get("/", async (req, res) => {
+    try {
+      // await clearDb;
+      console.log(req.session.userId)
+      res.render("index.ejs", {
+      "displayName": req.session.displayName,
+      "userId": req.session.userId
+    })
+    } catch (err) {
+      res.send(err)
+    }
 });
 
 

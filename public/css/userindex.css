@@ -9,6 +9,7 @@ header {
 	border-radius: 10px;
 }
 .title {
+    color: rgba(248,236,194, 1);
     margin: 60px auto 60px auto;
     /*color: #905923;*/
     font-family: Luminari, fantasy;
