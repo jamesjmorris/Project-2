@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 
 // This allows the user to remain logged in after restarting the server.
 const store = new MongoDBStore({
-  const mongoUri = process.env.MONGODB_URI ||"mongodb://localhost:27017/gladiator",
+  uri: process.env.MONGODB_URI ||"mongodb://localhost:27017/gladiator",
   // uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
   collection: 'mySessions'
 });
