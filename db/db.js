@@ -10,7 +10,9 @@ const url = "mongodb://localhost:27017/gladiator";
 mongoose.connect(url, { useNewUrlParser: true });
 
 // const mongoUri = process.env.MONGODB_URI ||"mongodb://localhost:27017/gladiator";
-mongoose.connect(mongoUri);
+// mongoose.connect(mongoUri);
+mongoose.connect(store);
+
 
 mongoose.connection.on("connected", () => {
 	console.log("Mongoose is connected.");
