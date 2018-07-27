@@ -6,10 +6,10 @@ const mongoose = require("mongoose");
 
 
 // Create the db and connect
-// const url = "mongodb://localhost:27017/gladiator";
-// mongoose.connect(url, { useNewUrlParser: true });
+const url = "mongodb://localhost:27017/gladiator";
+mongoose.connect(url, { useNewUrlParser: true });
 
-const mongoUri = process.env.MONGODB_URI ||"mongodb://localhost:27017/gladiator";
+// const mongoUri = process.env.MONGODB_URI ||"mongodb://localhost:27017/gladiator";
 mongoose.connect(mongoUri);
 
 mongoose.connection.on("connected", () => {

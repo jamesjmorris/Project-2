@@ -1,3 +1,8 @@
 # Ignore folder named 'node_modues'
 node_modules/
 
+package.json
+
+package-lock.json
+
+.env
